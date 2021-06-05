@@ -1,6 +1,10 @@
 import mongoosePaginate from 'mongoose-paginate-v2';
 import { Schema, model } from 'mongoose';
 
+/**
+ * Schema de las empresas
+ * @category Models
+ */
 const businessSchema = new Schema({
   name: {
     type: String,

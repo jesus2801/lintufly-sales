@@ -1,5 +1,9 @@
 import { Schema, model, Types } from 'mongoose';
 
+/**
+ * Schema de los locales o tiendas de las empresas
+ * @category Models
+ */
 const storeSchema = new Schema({
   name: {
     type: String,

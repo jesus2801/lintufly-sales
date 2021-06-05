@@ -1,3 +1,4 @@
+//configuración de todo el servidor
 export default {
   server: {
     clientOrigin: process.env.CLIENT_ORIGIN!,

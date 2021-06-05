@@ -1,9 +1,9 @@
-import { readFileSync } from 'fs';
-import path from 'path';
-// import { combineSchemas } from 'src/functions';
 import { mergeTypeDefs } from 'graphql-tools';
+import { readFileSync } from 'fs';
 import { print } from 'graphql';
+import path from 'path';
 
+// leo todos los archivos de schemas y luego los uno
 export default print(
   mergeTypeDefs([
     readFileSync(path.join(__dirname, './Business/schema.graphql'), 'utf-8'),

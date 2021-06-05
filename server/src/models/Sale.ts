@@ -1,5 +1,9 @@
 import { Schema, model, Types } from 'mongoose';
 
+/**
+ * Schema de los estados de los pedidos
+ * @category Models
+ */
 const stateSchema = new Schema({
   state: {
     type: Number,
@@ -15,6 +19,10 @@ const stateSchema = new Schema({
   },
 });
 
+/**
+ * Schema de los pedidos de las empresas
+ * @category Models
+ */
 const saleSchema = new Schema({
   product: {
     type: Types.ObjectId,

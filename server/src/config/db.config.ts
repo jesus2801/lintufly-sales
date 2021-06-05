@@ -1,8 +1,13 @@
 import { connect } from 'mongoose';
 import config from '.';
 
+/**
+ * Función para iniciar la conexión con MongoDB
+ * @category MongoDB
+ */
 export const initConn = async () => {
   try {
+    //me conecto a mongo por medio de la uri predefinida en los .env
     await connect(config.db.uri, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
@@ -10,6 +15,7 @@ export const initConn = async () => {
       useCreateIndex: true,
     });
   } catch (e) {
+    // si hay un error lo logueo y me salgo
     // logger.err(e)
     process.exit(1);
   }

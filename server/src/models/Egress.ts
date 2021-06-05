@@ -1,5 +1,9 @@
 import { Schema, model, Types } from 'mongoose';
 
+/**
+ * Schema de los egresos de las empresas
+ * @category Models
+ */
 const egressSchema = new Schema({
   val: {
     type: Number,

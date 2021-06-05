@@ -1,5 +1,9 @@
 import { Schema, model, Types } from 'mongoose';
 
+/**
+ * Schema de los empleados de las empresas
+ * @category Models
+ */
 const employeeSchema = new Schema({
   name: {
     tpye: String,

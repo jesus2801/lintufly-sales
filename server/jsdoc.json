@@ -1,0 +1,27 @@
+{
+  "tags": {
+    "allowUnknownTags": ["category", "subcategory", "optional"],
+    "dictionaries": ["jsdoc", "closure"]
+  },
+  "source": {
+    "include": ["./src"],
+    "includePattern": ".+\\.ts(doc|x)?$",
+    "exclude": ["node_modules/|docs|dist|coverage|@types|__test__"],
+    "excludePattern": "(^|\\/|\\\\)_"
+  },
+  "plugins": ["node_modules/better-docs/typescript", "node_modules/better-docs/category"],
+  "typescript": {
+    "moduleRoot": "./src"
+  },
+  "templates": {
+    "better-docs": {
+      "name": "Server Lintufly-Sales"
+    }
+  },
+  "opts": {
+    "template": "node_modules/better-docs",
+    "destination": "./docs",
+    "recurse": true,
+    "readme": "./README.md"
+  }
+}
