@@ -1,0 +1,70 @@
+{
+  "name": "lintufly-sales",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "nodemonConfig": {
+    "ignore": [
+      "**/*.test.ts",
+      "**/*.spec.ts",
+      ".git",
+      "node_modules"
+    ],
+    "watch": [
+      "src"
+    ],
+    "exec": "node -r tsconfig-paths/register -r ts-node/register ./src/index.ts",
+    "ext": "ts, graphql"
+  },
+  "scripts": {
+    "prestart": "npm install --production",
+    "start": "node dist/index.js",
+    "dev": "nodemon",
+    "build": "tsc",
+    "postbuild": "tscpaths -p tsconfig.json -s ./src -o ./dist",
+    "indent": "prettier --write .",
+    "docs": "jsdoc -c jsdoc.json"
+  },
+  "keywords": [],
+  "author": "Jesús García",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "dotenv": "^10.0.0",
+    "fastify": "^3.17.0",
+    "fastify-helmet": "^5.3.1",
+    "geoip-lite": "^1.4.2",
+    "graphql": "^15.5.0",
+    "graphql-tools": "^7.0.5",
+    "jsonwebtoken": "^8.5.1",
+    "mercurius": "^7.7.0",
+    "mongoose": "^5.12.13",
+    "mongoose-paginate-v2": "^1.3.18",
+    "nodemailer": "^6.6.1",
+    "path": "^0.12.7",
+    "winston": "^3.3.3"
+  },
+  "devDependencies": {
+    "@types/autocannon": "^4.1.0",
+    "@types/bcrypt": "^5.0.0",
+    "@types/geoip-lite": "^1.4.1",
+    "@types/jest": "^26.0.23",
+    "@types/jsonwebtoken": "^8.5.1",
+    "@types/mongoose-paginate-v2": "^1.3.10",
+    "@types/node": "^15.12.1",
+    "@types/nodemailer": "^6.4.2",
+    "@types/supertest": "^2.0.11",
+    "autocannon": "^7.3.0",
+    "better-docs": "^2.3.2",
+    "jest": "^27.0.4",
+    "jsdoc": "^3.6.7",
+    "nodemon": "^2.0.7",
+    "prettier": "^2.3.0",
+    "supertest": "^6.1.3",
+    "ts-jest": "^27.0.2",
+    "ts-node": "^10.0.0",
+    "tsconfig-paths": "^3.9.0",
+    "tscpaths": "^0.0.9",
+    "typescript": "^3.9.9"
+  }
+}

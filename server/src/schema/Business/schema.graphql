@@ -1,0 +1,65 @@
+type Query {
+  allBusiness(page: Int!): AllBusinessResponse!
+  getBusiness(_id: ID!): Business
+  searchBusiness(input: SearchBusinessInput!): AllBusinessResponse!
+}
+
+type Mutation {
+  createBusiness(input: BusinessInput!): Business
+  updateBusiness(input: UpdateBusiness!): Boolean
+  deleteBusiness(_id: ID!): Boolean
+}
+
+input SearchBusinessInput {
+  name: String!
+  page: Int!
+}
+
+type AllBusinessResponse {
+  docs: [Business!]!
+  totalDocs: Int!
+  limit: Int!
+  page: Int
+  totalPages: Int!
+  hasNextPage: Boolean!
+  nextPage: Int
+  hasPrevPage: Boolean!
+  prevPage: Int
+  pagingCounter: Int!
+}
+
+input UpdateBusiness {
+  _id: ID!
+  updates: BusinessUpdates!
+}
+
+input BusinessUpdates {
+  name: String
+  mail: String
+  state: Boolean
+  currency: String
+  phones: [String!]
+  union: Int
+  imgs: [String!]
+}
+
+input BusinessInput {
+  name: String!
+  mail: String!
+  state: Boolean!
+  currency: String!
+  phones: [String!]!
+  union: Int!
+  imgs: [String!]!
+}
+
+type Business {
+  _id: ID!
+  name: String!
+  mail: String!
+  state: Boolean!
+  currency: String!
+  phones: [String!]!
+  union: Int!
+  imgs: [String!]!
+}
