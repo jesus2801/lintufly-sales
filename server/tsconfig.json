@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "baseUrl": "./",
+    "baseUrl": "./src",
     "outDir": "./dist",
     "target": "es5",
     "module": "commonjs",
@@ -8,7 +8,14 @@
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "paths": {
+      "@config/*": ["config/*"],
+      "@functions/*": ["functions/*"],
+      "@interfaces/*": ["interfaces/*"],
+      "@models/*": ["models/*"],
+      "@schema/*": ["schema/*"]
+    }
   },
   "exclude": ["node_modules", "__test__"],
   "include": ["src"]

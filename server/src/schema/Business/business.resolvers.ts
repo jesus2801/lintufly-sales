@@ -1,5 +1,5 @@
-import { PaginateResults } from 'src/interfaces/schema';
-import BusinessModel from 'src/models/Business';
+import { PaginateResults } from '@interfaces/schema';
+import BusinessModel from '@models/Business';
 import {
   Business,
   BusinessInput,
@@ -7,9 +7,9 @@ import {
   NameInput,
   PaginateInput,
   UpdateBusinessInput,
-} from 'src/interfaces/schema/business';
+} from '@interfaces/schema/business';
 
-const resolvers = {
+export default {
   Query: {
     allBusiness: async (
       _: any,
@@ -55,5 +55,3 @@ const resolvers = {
     },
   },
 };
-
-export default resolvers;

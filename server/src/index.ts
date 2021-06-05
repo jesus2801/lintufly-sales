@@ -2,9 +2,9 @@
 process.env.NODE_ENV = 'dev';
 
 //import la configuración de los .env
-import './config/env.config';
+import '@config/env.config';
 
-import { App } from './config/server.config';
+import { App } from '@config/server.config';
 
 //función que inicializa el servidor
 const main = async () => {

@@ -2,9 +2,9 @@ import fastify, { FastifyInstance } from 'fastify';
 import mercurius from 'mercurius';
 import helmet from 'fastify-helmet';
 
-import resolvers from '../schema/resolvers';
+import resolvers from '@schema/resolvers';
 import { initConn } from './db.config';
-import schema from '../schema/schema';
+import schema from '@schema/schema';
 
 /**
  * Clase que inicializa el servidor
