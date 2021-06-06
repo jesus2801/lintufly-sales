@@ -12,12 +12,15 @@
     "types": ["jest"],
     "paths": {
       "@config/*": ["config/*"],
+      "@config": ["config/index"],
       "@functions/*": ["functions/*"],
       "@interfaces/*": ["interfaces/*"],
+      "@interfaces": ["interfaces/index"],
       "@models/*": ["models/*"],
-      "@graphql/*": ["graphql/*"]
+      "@graphql/*": ["graphql/*"],
+      "@services/*": ["services/*"],
     }
   },
   "exclude": ["node_modules", "__test__"],
-  "include": ["src", "**/.graphql"]
+  "include": ["src"]
 }

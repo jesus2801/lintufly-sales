@@ -1,10 +1,18 @@
+import { applyMiddleware } from 'graphql-middleware';
+import { makeExecutableSchema } from 'graphql-tools';
 import fastify, { FastifyInstance } from 'fastify';
-import mercurius from 'mercurius';
 import helmet from 'fastify-helmet';
+import mercurius from 'mercurius';
 
 import resolvers from '@graphql/resolvers';
-import { initConn } from './db.config';
 import schema from '@graphql/schema';
+
+import { initConn } from './db.config';
+
+import { GrahpqlCtx } from '@interfaces';
+
+import authServices from '@services/auth.services';
+import permissions from '@graphql/permissions';
 
 /**
  * Clase que inicializa el servidor
@@ -20,7 +28,6 @@ export class App {
    */
   constructor(port?: number) {
     this.app = fastify({
-      // logger: true,
       trustProxy: process.env.NODE_ENV === 'production',
     });
     this.port = port || parseInt(process.env.PORT!);
@@ -33,10 +40,21 @@ export class App {
    */
   private middlewares() {
     this.app.register(mercurius, {
-      schema: schema,
-      resolvers,
+      schema: applyMiddleware(
+        makeExecutableSchema({
+          typeDefs: schema,
+          resolvers,
+        }),
+        permissions,
+      ),
       graphiql: process.env.NODE_ENV !== 'production',
+      context: (req): GrahpqlCtx => {
+        return {
+          user: authServices.authToken(req.headers['x-auth-token'] as string),
+        };
+      },
     });
+
     if (process.env.NODE_ENV === 'production') {
       this.app.register(helmet);
     } else {
