@@ -2,9 +2,9 @@ import fastify, { FastifyInstance } from 'fastify';
 import mercurius from 'mercurius';
 import helmet from 'fastify-helmet';
 
-import resolvers from '@schema/resolvers';
+import resolvers from '@graphql/resolvers';
 import { initConn } from './db.config';
-import schema from '@schema/schema';
+import schema from '@graphql/schema';
 
 /**
  * Clase que inicializa el servidor
@@ -20,7 +20,7 @@ export class App {
    */
   constructor(port?: number) {
     this.app = fastify({
-      logger: true,
+      // logger: true,
       trustProxy: process.env.NODE_ENV === 'production',
     });
     this.port = port || parseInt(process.env.PORT!);
@@ -35,10 +35,14 @@ export class App {
     this.app.register(mercurius, {
       schema: schema,
       resolvers,
-      graphiql: true,
+      graphiql: process.env.NODE_ENV !== 'production',
     });
     if (process.env.NODE_ENV === 'production') {
       this.app.register(helmet);
+    } else {
+      this.app.get('/', (req, reply) => {
+        reply.send('');
+      });
     }
   }
 

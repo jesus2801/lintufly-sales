@@ -1,5 +1,6 @@
 import { connect } from 'mongoose';
 import config from '.';
+import { logger } from './logger.config';
 
 /**
  * Función para iniciar la conexión con MongoDB
@@ -14,6 +15,7 @@ export const initConn = async () => {
       useFindAndModify: false,
       useCreateIndex: true,
     });
+    logger.info('MongoDB is conected');
   } catch (e) {
     // si hay un error lo logueo y me salgo
     // logger.err(e)

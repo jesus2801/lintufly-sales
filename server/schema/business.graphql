@@ -39,7 +39,7 @@ input BusinessUpdates {
   state: Boolean
   currency: String
   phones: [String!]
-  union: Int
+  union: Float!
   imgs: [String!]
 }
 
@@ -49,7 +49,7 @@ input BusinessInput {
   state: Boolean!
   currency: String!
   phones: [String!]!
-  union: Int!
+  union: Float!
   imgs: [String!]!
 }
 
@@ -60,6 +60,6 @@ type Business {
   state: Boolean!
   currency: String!
   phones: [String!]!
-  union: Int!
+  union: Float!
   imgs: [String!]!
 }
