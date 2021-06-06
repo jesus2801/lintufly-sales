@@ -1,12 +1,11 @@
 import { Business } from '@interfaces/schema/business';
-import request from 'supertest';
-import { q, serverRute } from '../variables';
+import { q } from '../variables';
 
 const add = `
 mutation {
   createBusiness(input: {
    name: "Prueba"
-   mail: "prueba@gmail.com"
+   mail: "emialdeprueba@gmail.com"
    state: true
    currency: "COP"
    phones: ["+57 3052743992"]
@@ -28,7 +27,7 @@ const getAll = `
 }
 `;
 
-export const getOne = (id: string) => `
+const getOne = (id: string) => `
 {
   getBusiness(_id: "${id}") {
     _id
@@ -36,7 +35,7 @@ export const getOne = (id: string) => `
 }
 `;
 
-export const search = `
+const search = `
 {
   searchBusiness(input: {
     name: "Prueba"
@@ -49,6 +48,17 @@ export const search = `
 }
 `;
 
+const updateBusiness = (id: string) => `
+mutation {
+  updateBusiness(input: {
+    _id: "${id}"
+    updates: {
+      name: "Prueba Cambiada"
+    }
+  }) 
+}
+`;
+
 const deleteBusiness = (id: string) => `
 mutation {
   deleteBusiness(_id: "${id}")
@@ -56,28 +66,39 @@ mutation {
 `;
 
 describe('Business tests', () => {
-  it('Do all actions of the company', async (done) => {
-    const addResults = await request(serverRute).post('/graphql').send(q(add));
+  it('Do all actions of the company', async () => {
+    //ingresar una nueva empresa
+    const addResults = await q(add);
     expect(addResults.statusCode).toBe(200);
     const companyId = addResults.body.data.createBusiness._id;
     expect(typeof companyId).toBe('string');
 
-    const allResults = await request(serverRute).post('/graphql').send(q(getAll));
+    //obtener todas las empresas
+    const allResults = await q(getAll);
     expect(allResults.statusCode).toBe(200);
-    const allDocs: Business[] = allResults.body.allBusiness.docs;
+    const allDocs: Business[] = allResults.body.data.allBusiness.docs;
     expect(allDocs.length).toBeGreaterThan(0);
     expect(allDocs.some((doc) => doc._id === companyId)).toBe(true);
 
-    const getOneResults = await request(serverRute)
-      .post('/graphql')
-      .send(q(getOne(companyId)));
+    //Buscar el documento por su id
+    const getOneResults = await q(getOne(companyId));
     expect(getOneResults.statusCode).toBe(200);
     expect(getOneResults.body.data.getBusiness._id).toBe(companyId);
 
-    const searchResults = await request(serverRute).post('/graphql').send(q(search));
+    //Buscar documentos que coincidan con el nombre ingresado
+    const searchResults = await q(search);
     expect(searchResults.statusCode).toBe(200);
-    const searchDocs = searchResults.body.data.getBusiness.
 
-    done();
+    const searchDocs: Business[] = searchResults.body.data.searchBusiness.docs;
+    expect(searchDocs.length).toBeGreaterThan(0);
+    expect(searchDocs.some((doc) => doc._id === companyId)).toBe(true);
+
+    //actualizar documento
+    const updateResults = await q(updateBusiness(companyId));
+    expect(updateResults.statusCode).toBe(200);
+
+    //eliminar la empresa
+    const deleteResults = await q(deleteBusiness(companyId));
+    expect(deleteResults.statusCode).toBe(200);
   });
 });

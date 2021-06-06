@@ -39,7 +39,7 @@ input BusinessUpdates {
   state: Boolean
   currency: String
   phones: [String!]
-  union: Float!
+  union: Float
   imgs: [String!]
 }
 

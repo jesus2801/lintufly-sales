@@ -8,40 +8,40 @@ import { Schema, model } from 'mongoose';
 const businessSchema = new Schema({
   name: {
     type: String,
-    required: true,
+    required: [true, 'code:required'],
     unique: true,
     dropDups: true,
     index: true,
   },
   mail: {
     type: String,
-    required: true,
+    required: [true, 'code:required'],
     unique: true,
     dropDups: true,
   },
   state: {
     type: Boolean,
-    required: true,
+    required: [true, 'code:required'],
     default: true,
   },
   currency: {
     type: String,
-    required: true,
+    required: [true, 'code:required'],
     default: 'USD',
   },
   imgs: {
     type: [String],
-    required: true,
+    required: [true, 'code:required'],
     default: [],
   },
   phones: {
     type: [String],
-    required: true,
+    required: [true, 'code:required'],
     default: [],
   },
   union: {
     type: Number,
-    required: true,
+    required: [true, 'code:required'],
     default: Date.now(),
   },
 });

@@ -26,7 +26,10 @@
     "postbuild": "tscpaths -p tsconfig.json -s ./src -o ./dist",
     "indent": "prettier --write .",
     "docs": "jsdoc -c jsdoc.json",
-    "autocannon": "ts-node ./__test__/auto/index.ts"
+    "autocannon": "ts-node ./__test__/auto/index.ts",
+    "test": "jest --transformIgnorePatterns --runInBand -- index.spec.ts",
+    "test:coverage": "jest --coverage",
+    "test:open": "cd coverage/lcov-report && \"index.html\""
   },
   "jest": {
     "modulePaths": [

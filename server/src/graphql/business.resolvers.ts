@@ -15,7 +15,7 @@ export default {
       _: any,
       { page }: PaginateInput,
     ): Promise<PaginateResults<Business>> => {
-      return await BusinessModel.paginate({}, { page, limit: 15 });
+      return await BusinessModel.paginate({}, { page, limit: 15, sort: { union: -1 } });
     },
 
     getBusiness: async (_: any, { _id }: IdInput): Promise<Business | null> => {

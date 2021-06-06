@@ -13,7 +13,7 @@ import Master from '@config/clusters.config';
 import { App } from '@config/server.config';
 
 //función que inicializa el servidor
-const main = async () => {
+(async () => {
   if (process.env.NODE_ENV === 'dev') {
     const app = new App();
     return app.listen();
@@ -40,6 +40,4 @@ const main = async () => {
     const app = new App();
     return app.listen();
   }
-};
-
-main();
+})();
