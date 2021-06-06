@@ -19,6 +19,7 @@
       "@models/*": ["models/*"],
       "@graphql/*": ["graphql/*"],
       "@services/*": ["services/*"],
+      "@utils/*": ["utils/*"],
     }
   },
   "exclude": ["node_modules", "__test__"],

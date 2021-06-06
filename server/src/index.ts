@@ -11,6 +11,17 @@ import '@config/env.config';
 import { logger } from '@config/logger.config';
 import Master from '@config/clusters.config';
 import { App } from '@config/server.config';
+import { handlerErrors } from 'utils/handler.errors';
+
+// handlear cuando no hay un reject
+process.on('unhandledRejection', (e) => {
+  handlerErrors(e, true);
+});
+
+//handlear las exepciones desconocidas
+process.on('uncaughtException', (e) => {
+  handlerErrors(e, true);
+});
 
 //función que inicializa el servidor
 (async () => {

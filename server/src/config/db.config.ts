@@ -1,3 +1,4 @@
+import { handlerErrors } from '@utils/handler.errors';
 import { connect } from 'mongoose';
 import config from '.';
 import { logger } from './logger.config';
@@ -17,8 +18,8 @@ export const initConn = async () => {
     });
     logger.info('MongoDB is conected');
   } catch (e) {
-    // si hay un error lo logueo y me salgo
-    // logger.err(e)
+    // si hay un error lo paso al manejador y me salgo
+    handlerErrors(e);
     process.exit(1);
   }
 };

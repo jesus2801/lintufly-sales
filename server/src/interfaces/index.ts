@@ -26,5 +26,8 @@ export type AppRols = 'admin' | 'client' | 'employee';
  * Información que almacena el token de los usuarios
  */
 export interface UserPayload {
+  /**
+   * Roles de la aplicación
+   */
   role: AppRols;
 }

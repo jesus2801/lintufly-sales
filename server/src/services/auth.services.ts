@@ -1,7 +1,12 @@
-import config from '@config';
-import { UserPayload } from '@interfaces';
 import jwt from 'jsonwebtoken';
 
+import { UserPayload } from '@interfaces';
+
+import config from '@config';
+
+/**
+ * Clase de servicios de autenticación
+ */
 class AuthServices {
   public authToken(token: string): UserPayload | null {
     try {

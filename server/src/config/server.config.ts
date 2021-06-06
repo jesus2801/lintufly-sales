@@ -4,15 +4,17 @@ import fastify, { FastifyInstance } from 'fastify';
 import helmet from 'fastify-helmet';
 import mercurius from 'mercurius';
 
+import { errorController } from '@utils/handler.errors';
+
+import authServices from '@services/auth.services';
+
+import permissions from '@graphql/permissions';
 import resolvers from '@graphql/resolvers';
 import schema from '@graphql/schema';
 
-import { initConn } from './db.config';
-
 import { GrahpqlCtx } from '@interfaces';
 
-import authServices from '@services/auth.services';
-import permissions from '@graphql/permissions';
+import { initConn } from './db.config';
 
 /**
  * Clase que inicializa el servidor
@@ -33,6 +35,7 @@ export class App {
     this.port = port || parseInt(process.env.PORT!);
 
     this.middlewares();
+    this.handlers();
   }
 
   /**
@@ -48,20 +51,20 @@ export class App {
         permissions,
       ),
       graphiql: process.env.NODE_ENV !== 'production',
-      context: (req): GrahpqlCtx => {
-        return {
-          user: authServices.authToken(req.headers['x-auth-token'] as string),
-        };
-      },
+      context: (req): GrahpqlCtx => ({
+        user: authServices.authToken(req.headers['x-auth-token'] as string),
+      }),
     });
 
-    if (process.env.NODE_ENV === 'production') {
-      this.app.register(helmet);
-    } else {
-      this.app.get('/', (req, reply) => {
+    if (process.env.NODE_ENV === 'production') this.app.register(helmet);
+    else
+      this.app.get('/', ({}, reply) => {
         reply.send('');
       });
-    }
+  }
+
+  public handlers() {
+    this.app.setErrorHandler(errorController);
   }
 
   /**
