@@ -1,5 +1,41 @@
-import mongoosePaginate from 'mongoose-paginate-v2';
-import { Schema, model } from 'mongoose';
+import * as mongoosePaginate from 'mongoose-paginate-v2';
+import { Schema, model, Document } from 'mongoose';
+import { IModel } from '@interfaces/schema';
+
+export interface IBusiness extends Document {
+  /**
+   * Nombre de la empresa
+   */
+  name: string;
+  /**
+   * Email de la empresa
+   */
+  mail: string;
+  /**
+   * Moneda que maneja la empresa
+   */
+  currency: string;
+  /**
+   * Telefonos de la empresa
+   */
+  phones: string[];
+  /**
+   * Imagenes de la empresa
+   */
+  imgs: string[];
+  /**
+   * Código de la empresa
+   */
+  code: string;
+  /**
+   * Estado de la empresa
+   */
+  state: boolean;
+  /**
+   * Fecha en milisegundos de la unión de la empresa a la plataforma
+   */
+  union: number;
+}
 
 /**
  * Schema de las empresas
@@ -10,7 +46,7 @@ const businessSchema = new Schema({
     type: String,
     required: [true, 'code:required'],
     unique: true,
-    dropDups: true
+    dropDups: true,
   },
   mail: {
     type: String,
@@ -51,6 +87,8 @@ const businessSchema = new Schema({
   },
 });
 
+//TODO: arreglar este tipado
+//@ts-ignore
 businessSchema.plugin(mongoosePaginate);
 
-export default model('Business', businessSchema);
+export default model<IBusiness>('Business', businessSchema) as IModel<IBusiness>;

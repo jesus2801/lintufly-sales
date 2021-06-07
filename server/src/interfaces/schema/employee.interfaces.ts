@@ -1,14 +1,29 @@
-import { AppRoles } from '..';
+export interface LoginData {
+  /**
+   * Email del empleado
+   */
+  mail: string;
+  /**
+   * Contraseña del empleado
+   */
+  pass: string;
+}
+
+/**
+ * Información del input del logueo del empleado
+ */
+export interface LoginInput {
+  input: LoginData;
+}
 
 /**
  * Información del empleado
  */
-export interface EmployeeData {
+export interface EmployeeData extends LoginData {
   /**
    * Nombre del empleado
    */
   name: string;
-
   /**
    * Id de la empresa del empleado
    */
@@ -17,32 +32,7 @@ export interface EmployeeData {
   /**
    * Id de la tienda del empleado
    */
-  store: string;
-
-  /**
-   * Email del empleado
-   */
-  mail: string;
-
-  /**
-   * Estado del empleado
-   */
-  state: boolean;
-
-  /**
-   * Contraseña del empleado
-   */
-  pass: string;
-
-  /**
-   * rol del empleado
-   */
-  role: AppRoles;
-
-  /**
-   * Avatar del empleado
-   */
-  avatar: string;
+  store?: string;
 }
 
 /**
@@ -57,19 +47,4 @@ export interface EmployeeInput {
    * Código de unión a la empresa
    */
   key: string;
-}
-
-export interface EmployeeDoc extends EmployeeData {
-  /**
-   * Id del documento del empleado
-   */
-  _id: string;
-  /**
-   * Codigo de verificación del empleado
-   */
-  code: string;
-  /**
-   * Fecha de registro del empleado en la plataforma en milisegundos
-   */
-  union: number;
 }

@@ -6,9 +6,15 @@ type Query {
 }
 
 type Mutation {
-  createBusiness(input: BusinessInput!): Business
+  createBusiness(business: BusinessInput!, admin: AdminInput!): String
   updateBusiness(input: UpdateBusiness!): Boolean
   deleteBusiness(_id: ID!): Boolean
+}
+
+input AdminInput {
+  name: String!
+  mail: String!
+  pass: String!
 }
 
 input SearchBusinessInput {
@@ -37,20 +43,16 @@ input UpdateBusiness {
 input BusinessUpdates {
   name: String
   mail: String
-  state: Boolean
   currency: String
   phones: [String!]
-  union: Float
   imgs: [String!]
 }
 
 input BusinessInput {
   name: String!
   mail: String!
-  state: Boolean!
   currency: String!
   phones: [String!]!
-  union: Float!
   imgs: [String!]!
 }
 
@@ -58,7 +60,6 @@ type Business {
   _id: ID!
   name: String!
   mail: String!
-  state: Boolean!
   currency: String!
   phones: [String!]!
   union: Float!

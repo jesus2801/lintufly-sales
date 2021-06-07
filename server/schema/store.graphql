@@ -1,0 +1,18 @@
+type Mutation {
+  createStore(input: StoreInput): Store
+}
+
+input StoreInput {
+  name: String!
+  business: ID!
+  dir: String
+  desc: String
+}
+
+type Store {
+  _id: ID!
+  name: String!
+  business: ID!
+  dir: String
+  desc: String
+}

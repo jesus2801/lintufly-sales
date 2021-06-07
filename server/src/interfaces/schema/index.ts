@@ -1,3 +1,5 @@
+import { Document, PaginateModel } from 'mongoose';
+
 /**
  * Interfaz para los resultados paginados
  * @category Schema
@@ -14,3 +16,5 @@ export interface PaginateResults<T> {
   prevPage?: number | null;
   pagingCounter: number;
 }
+
+export interface IModel<T extends Document> extends PaginateModel<T> {}

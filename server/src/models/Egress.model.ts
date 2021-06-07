@@ -15,8 +15,7 @@ const egressSchema = new Schema({
     required: true,
   },
   desc: {
-    Type: Types.ObjectId,
-    ref: 'Business',
+    Type: String,
     required: true,
   },
   date: {

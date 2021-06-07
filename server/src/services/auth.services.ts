@@ -20,6 +20,10 @@ class AuthServices {
       return null;
     }
   }
+
+  public signToken(payload: UserPayload): string {
+    return jwt.sign(payload, config.server.secret, { expiresIn: '3h' });
+  }
 }
 
 export default new AuthServices();

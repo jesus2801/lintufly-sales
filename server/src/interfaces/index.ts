@@ -17,17 +17,71 @@ export interface GrahpqlCtx {
   user: UserPayload | null;
 }
 
+export type AdminRole = 'admin';
+export type ClientRole = 'client';
+export type EmployeeRole = 'employee';
 /**
  * Todos los posibles roles de la aplicación
  */
-export type AppRoles = 'admin' | 'client' | 'employee';
+export type AppRoles = AdminRole | ClientRole | EmployeeRole;
 
 /**
  * Información que almacena el token de los usuarios
  */
-export interface UserPayload {
-  /**
-   * Roles de la aplicación
-   */
-  role: AppRoles;
-}
+export type UserPayload =
+  | {
+      /**
+       * Rol del usuario
+       */
+      role: ClientRole;
+      /**
+       * Id del usuario
+       */
+      sub: string;
+      /**
+       * Email del usuario
+       */
+      mail: string;
+      /**
+       * Nombre del usuario
+       */
+      name: string;
+    }
+  | {
+      /**
+       * Rol del usuario
+       */
+      role: AdminRole | EmployeeRole;
+      /**
+       * Id del usuario
+       */
+      sub: string;
+      /**
+       * Email del usuario
+       */
+      mail: string;
+      /**
+       * Nombre del usuario
+       */
+      name: string;
+      /**
+       * Id de la empresa a la que pertenece el usuario
+       */
+      businessId: string;
+      /**
+       * Nombre de la empresa a la que pertenece el usuario
+       */
+      businessName: string;
+      /**
+       * Id de la tienda o local a la que pertenece el usuario
+       */
+      storeId?: string;
+      /**
+       * Nombre de la tienda o local a la que pertenece el usuario
+       */
+      storeName?: string;
+      /**
+       * avatar del usuario
+       */
+      avatar: string;
+    };

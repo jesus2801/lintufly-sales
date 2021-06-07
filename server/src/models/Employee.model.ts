@@ -1,4 +1,52 @@
-import { Schema, model, Types } from 'mongoose';
+import { Schema, model, Types, Document } from 'mongoose';
+
+import { EmployeeRole, AdminRole } from '@interfaces';
+import { IModel } from '@interfaces/schema';
+
+export interface IEmployee extends Document {
+  /**
+   * Email del empleado
+   */
+  mail: string;
+  /**
+   * Contraseña del empleado
+   */
+  pass: string;
+  /**
+   * Nombre del empleado
+   */
+  name: string;
+  /**
+   * Id de la empresa del empleado
+   */
+  business: string;
+
+  /**
+   * Id de la tienda del empleado
+   */
+  store?: string;
+  /**
+   * Codigo de verificación del empleado
+   */
+  code: string;
+  /**
+   * Fecha de registro del empleado en la plataforma en milisegundos
+   */
+  union: number;
+  /**
+   * rol del empleado
+   */
+  role: EmployeeRole | AdminRole;
+  /**
+   * Estado del empleado
+   */
+  state: boolean;
+
+  /**
+   * Avatar del empleado
+   */
+  avatar: string;
+}
 
 /**
  * Schema de los empleados de las empresas
@@ -17,7 +65,7 @@ const employeeSchema = new Schema({
   store: {
     type: Types.ObjectId,
     ref: 'Store',
-    required: true,
+    required: false,
   },
   mail: {
     type: String,
@@ -37,7 +85,7 @@ const employeeSchema = new Schema({
   role: {
     type: String,
     required: true,
-    enum: ['a', 'e'],
+    enum: ['admin', 'employee'],
   },
   avatar: {
     type: String,
@@ -56,4 +104,4 @@ const employeeSchema = new Schema({
   },
 });
 
-export default model('Employee', employeeSchema);
+export default model<IEmployee>('Employee', employeeSchema) as IModel<IEmployee>;

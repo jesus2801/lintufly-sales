@@ -1,3 +1,5 @@
+import { EmployeeData } from './employee.interfaces';
+
 /**
  * Interfaz para los input que tomen el _id de mongoDB
  * @category Schema
@@ -68,10 +70,6 @@ export interface BusinessUpdates {
    * Número de contacto de la empresa
    */
   phones?: string[];
-  /**
-   * Unión de la empresa
-   */
-  union?: number;
 }
 
 /**
@@ -108,21 +106,13 @@ export interface BusinessInfo {
    */
   mail: string;
   /**
-   * Estado en el que se encuentra la empresa
-   */
-  state: boolean;
-  /**
    * Tipo de divisa que maneja la empresa
    */
-  currency?: string;
+  currency: string;
   /**
    * Número de contacto de la empresa
    */
   phones: string[];
-  /**
-   * Unión de la empresa
-   */
-  union: number;
   /**
    * Imagenes que representen a la empresa
    */
@@ -130,24 +120,10 @@ export interface BusinessInfo {
 }
 
 /**
- * Documento que contiene a una empresa
- * @category Schema
- */
-export interface Business extends BusinessInfo {
-  /**
-   * Id del documento que contiene a la empresa
-   */
-  _id: number;
-  /**
-   * Código de unión a la empresa
-   */
-  code: string;
-}
-
-/**
  * Input para agregar una empresa
  * @category Schema
  */
 export interface BusinessInput {
-  input: BusinessInfo;
+  business: BusinessInfo;
+  admin: Omit<EmployeeData, 'store' | 'business'>;
 }

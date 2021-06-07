@@ -16,7 +16,11 @@ export const handlerErrors = (e: any, unknowError?: boolean): void => {
   }
 };
 
-export const errorController = (e: FastifyError, req: FastifyRequest, reply: FastifyReply) => {
+export const errorController = (
+  e: FastifyError,
+  req: FastifyRequest,
+  reply: FastifyReply,
+) => {
   try {
     handlerErrors(e);
 
@@ -25,3 +29,11 @@ export const errorController = (e: FastifyError, req: FastifyRequest, reply: Fas
     handlerErrors(e);
   }
 };
+
+export class ServiceError {
+  public code: string;
+
+  constructor(code: string) {
+    this.code = code;
+  }
+}

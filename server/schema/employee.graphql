@@ -1,6 +1,9 @@
+type Query {
+  loginEmployee(input: LoginInput!): String!
+}
+
 type Mutation {
-  loginEmployee(input: LoginInput): String!
-  createEmployee(input: EmployeeInput, key: String!): Employee!
+  createEmployee(input: EmployeeInput!, key: String!): Boolean!
 }
 
 input LoginInput {
@@ -8,31 +11,28 @@ input LoginInput {
   pass: String!
 }
 
-enum EmployeeRoles {
-  a
-  e
-}
+# enum EmployeeRoles {
+#   admin
+#   employee
+# }
 
 input EmployeeInput {
   name: String!
   business: ID!
-  store: ID!
+  store: ID
   mail: String!
-  state: Boolean!
   pass: String!
-  role: EmployeeRoles!
-  avatar: String!
 }
 
-type Employee {
-  name: String!
-  business: ID!
-  store: ID!
-  mail: String!
-  state: Boolean!
-  pass: String!
-  role: EmployeeRoles!
-  avatar: String!
-  code: String!
-  union: Float!
-}
+# type Employee {
+#   name: String!
+#   business: ID!
+#   store: ID!
+#   mail: String!
+#   state: Boolean!
+#   pass: String!
+#   role: EmployeeRoles!
+#   avatar: String!
+#   code: String!
+#   union: Float!
+# }

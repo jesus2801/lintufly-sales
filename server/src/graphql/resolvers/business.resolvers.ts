@@ -1,6 +1,5 @@
 import { PaginateResults } from '@interfaces/schema';
 import {
-  Business,
   BusinessInput,
   CodeInterface,
   IdInput,
@@ -8,33 +7,42 @@ import {
   PaginateInput,
   UpdateBusinessInput,
 } from '@interfaces/schema/business.interfaces';
+
 import businessServices from '@services/business.services';
+
+import type { IBusiness } from '@models/Business.model';
 
 export default {
   Query: {
-    allBusiness: async ({}, { page }: PaginateInput): Promise<PaginateResults<Business>> => {
+    allBusiness: async (
+      {},
+      { page }: PaginateInput,
+    ): Promise<PaginateResults<IBusiness>> => {
       return await businessServices.all(page);
     },
 
-    getBusiness: async ({}, { _id }: IdInput): Promise<Business | null> => {
+    getBusiness: async ({}, { _id }: IdInput): Promise<IBusiness | null> => {
       return await businessServices.get(_id);
     },
 
-    getBusinessWithCode: async ({}, { code }: CodeInterface): Promise<Business | null> => {
+    getBusinessWithCode: async (
+      {},
+      { code }: CodeInterface,
+    ): Promise<IBusiness | null> => {
       return await businessServices.getWithCode(code);
     },
 
     searchBusiness: async (
       {},
       { input: { name, page } }: NameInput,
-    ): Promise<PaginateResults<Business>> => {
+    ): Promise<PaginateResults<IBusiness>> => {
       return await businessServices.search(name, page);
     },
   },
 
   Mutation: {
-    createBusiness: async ({}, { input }: BusinessInput): Promise<Business> => {
-      return await businessServices.create(input);
+    createBusiness: async ({}, { business, admin }: BusinessInput): Promise<string> => {
+      return await businessServices.create(business, admin);
     },
 
     updateBusiness: async (

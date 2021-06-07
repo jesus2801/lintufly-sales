@@ -1,14 +1,16 @@
-import { EmployeeInput } from '@interfaces/schema/employee.interfaces';
+import { EmployeeInput, LoginInput } from '@interfaces/schema/employee.interfaces';
 
 import employeeServices from '@services/employee.services';
 
 export default {
-  Mutation: {
-    async loginEmployee({}) {
-      return '';
+  Query: {
+    async loginEmployee({}, { input: { mail, pass } }: LoginInput): Promise<string> {
+      return employeeServices.login(mail, pass);
     },
+  },
 
-    async createEmployee({}, { input, key }: EmployeeInput) {
+  Mutation: {
+    async createEmployee({}, { input, key }: EmployeeInput): Promise<boolean> {
       return employeeServices.create(input, key);
     },
   },

@@ -30,6 +30,7 @@ export class App {
    */
   constructor(port?: number) {
     this.app = fastify({
+      logger: process.env.NODE_ENV !== 'production',
       trustProxy: process.env.NODE_ENV === 'production',
     });
     this.port = port || parseInt(process.env.PORT!);

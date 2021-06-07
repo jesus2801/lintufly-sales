@@ -20,9 +20,10 @@
       "@models/*": ["models/*"],
       "@graphql/*": ["graphql/*"],
       "@services/*": ["services/*"],
-      "@utils/*": ["utils/*"]
+      "@utils/*": ["utils/*"],
+      "@events/*": ["events/*"],
     }
   },
-  "exclude": ["node_modules", "__test__"],
+  "exclude": ["node_modules", "__test__", "docs", "dist"],
   "include": ["src"]
 }
