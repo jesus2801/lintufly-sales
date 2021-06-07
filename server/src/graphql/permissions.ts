@@ -12,6 +12,7 @@ export default shield(
       allBusiness: allow,
       getBusiness: allow,
       searchBusiness: allow,
+      getBusinessWithCode: allow,
     },
     Mutation: {
       createBusiness: allow,

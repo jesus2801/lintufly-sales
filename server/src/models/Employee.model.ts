@@ -6,7 +6,7 @@ import { Schema, model, Types } from 'mongoose';
  */
 const employeeSchema = new Schema({
   name: {
-    tpye: String,
+    type: String,
     required: true,
   },
   business: {
@@ -34,7 +34,7 @@ const employeeSchema = new Schema({
     type: String,
     required: true,
   },
-  rol: {
+  role: {
     type: String,
     required: true,
     enum: ['a', 'e'],
@@ -46,6 +46,8 @@ const employeeSchema = new Schema({
   code: {
     type: String,
     required: true,
+    unique: true,
+    dropDups: true,
   },
   union: {
     type: Number,

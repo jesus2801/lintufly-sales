@@ -9,6 +9,13 @@ export interface IdInput {
   _id: string;
 }
 
+export interface CodeInterface {
+  /**
+   * Código
+   */
+  code: string;
+}
+
 /**
  * Interfaz para recibir la página actual cuando se pidan datos paginados
  * @category Schema
@@ -40,6 +47,33 @@ export interface NameInput {
   };
 }
 
+export interface BusinessUpdates {
+  /**
+   * Nombre de la empresa
+   */
+  name?: string;
+  /**
+   * Email de la empresa
+   */
+  mail?: string;
+  /**
+   * Estado en el que se encuentra la empresa
+   */
+  state?: boolean;
+  /**
+   * Tipo de divisa que maneja la empresa
+   */
+  currency?: string;
+  /**
+   * Número de contacto de la empresa
+   */
+  phones?: string[];
+  /**
+   * Unión de la empresa
+   */
+  union?: number;
+}
+
 /**
  * Interfaz del input para actualizar la información de una empresa
  * @category Schema
@@ -56,32 +90,7 @@ export interface UpdateBusinessInput {
     /**
      * Campos a actualizar del documento
      */
-    updates: {
-      /**
-       * Nombre de la empresa
-       */
-      name?: string;
-      /**
-       * Email de la empresa
-       */
-      mail?: string;
-      /**
-       * Estado en el que se encuentra la empresa
-       */
-      state?: boolean;
-      /**
-       * Tipo de divisa que maneja la empresa
-       */
-      currency?: string;
-      /**
-       * Número de contacto de la empresa
-       */
-      phones?: string[];
-      /**
-       * Unión de la empresa
-       */
-      union?: number;
-    };
+    updates: BusinessUpdates;
   };
 }
 
@@ -129,6 +138,10 @@ export interface Business extends BusinessInfo {
    * Id del documento que contiene a la empresa
    */
   _id: number;
+  /**
+   * Código de unión a la empresa
+   */
+  code: string;
 }
 
 /**

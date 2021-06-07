@@ -10,8 +10,7 @@ const businessSchema = new Schema({
     type: String,
     required: [true, 'code:required'],
     unique: true,
-    dropDups: true,
-    index: true,
+    dropDups: true
   },
   mail: {
     type: String,
@@ -38,6 +37,12 @@ const businessSchema = new Schema({
     type: [String],
     required: [true, 'code:required'],
     default: [],
+  },
+  code: {
+    type: String,
+    required: [true, 'code:required'],
+    unique: true,
+    dropDups: true,
   },
   union: {
     type: Number,

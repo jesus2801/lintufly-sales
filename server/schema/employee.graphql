@@ -1,0 +1,38 @@
+type Mutation {
+  loginEmployee(input: LoginInput): String!
+  createEmployee(input: EmployeeInput, key: String!): Employee!
+}
+
+input LoginInput {
+  mail: String!
+  pass: String!
+}
+
+enum EmployeeRoles {
+  a
+  e
+}
+
+input EmployeeInput {
+  name: String!
+  business: ID!
+  store: ID!
+  mail: String!
+  state: Boolean!
+  pass: String!
+  role: EmployeeRoles!
+  avatar: String!
+}
+
+type Employee {
+  name: String!
+  business: ID!
+  store: ID!
+  mail: String!
+  state: Boolean!
+  pass: String!
+  role: EmployeeRoles!
+  avatar: String!
+  code: String!
+  union: Float!
+}

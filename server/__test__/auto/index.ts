@@ -28,6 +28,7 @@ const init = async () => {
 
     default:
       console.log('Opción desconocida');
+      init();
       break;
   }
 };

@@ -20,7 +20,7 @@ export interface GrahpqlCtx {
 /**
  * Todos los posibles roles de la aplicación
  */
-export type AppRols = 'admin' | 'client' | 'employee';
+export type AppRoles = 'admin' | 'client' | 'employee';
 
 /**
  * Información que almacena el token de los usuarios
@@ -29,5 +29,5 @@ export interface UserPayload {
   /**
    * Roles de la aplicación
    */
-  role: AppRols;
+  role: AppRoles;
 }

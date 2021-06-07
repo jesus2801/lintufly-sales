@@ -1,6 +1,7 @@
 type Query {
   allBusiness(page: Int!): AllBusinessResponse!
   getBusiness(_id: ID!): Business
+  getBusinessWithCode(code: String!): Business
   searchBusiness(input: SearchBusinessInput!): AllBusinessResponse!
 }
 

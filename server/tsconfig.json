@@ -14,12 +14,13 @@
       "@config/*": ["config/*"],
       "@config": ["config/index"],
       "@functions/*": ["functions/*"],
+      "@functions": ["functions/index"],
       "@interfaces/*": ["interfaces/*"],
       "@interfaces": ["interfaces/index"],
       "@models/*": ["models/*"],
       "@graphql/*": ["graphql/*"],
       "@services/*": ["services/*"],
-      "@utils/*": ["utils/*"],
+      "@utils/*": ["utils/*"]
     }
   },
   "exclude": ["node_modules", "__test__"],
