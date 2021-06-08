@@ -11,11 +11,11 @@ type Query {
 
 type Mutation {
   "Crear una nueva empresa dentro de la plataforma"
-  createBusiness(business: BusinessInput!, admin: AdminInput!): String
+  createBusiness(business: BusinessInput!, admin: AdminInput!): Boolean!
   "Actualizar la información de una empresa"
-  updateBusiness(input: UpdateBusiness!): Boolean
+  updateBusiness(input: UpdateBusiness!): Boolean!
   "Eliminar una empresa de la plataforma"
-  deleteBusiness(_id: ID!): Boolean
+  deleteBusiness(_id: ID!): Boolean!
 }
 
 "Input de la información del administrador de la empresa a crear"

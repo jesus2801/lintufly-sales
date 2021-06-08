@@ -11,8 +11,6 @@ import errorCodes from '@utils/error.codes';
 import BusinessModel, { IBusiness } from '@models/Business.model';
 import EmployeeModel from '@models/Employee.model';
 
-import authServices from './auth.services';
-
 import { hashPass } from '@functions';
 
 /**
@@ -23,12 +21,12 @@ class BusinessServices {
    * Servicio para crear una nueva empresa
    * @param {BusinessInfo} data información de la empresa a crear
    * @param {Omit<EmployeeData, 'store' | 'business'>} admin información del administrador de la empresa
-   * @returns {string} retorna el token del administrador
+   * @returns {boolean} retorna el token del administrador
    */
   public async create(
     data: BusinessInfo,
     admin: Omit<EmployeeData, 'store' | 'business'>,
-  ): Promise<string> {
+  ): Promise<boolean> {
     //validar los email de la empresa y el empleado
     if (!v.isEmail(data.mail) || !v.isEmail(admin.mail))
       throw new ServiceError(errorCodes.invalidEmail);
@@ -39,6 +37,8 @@ class BusinessServices {
     const newBusiness = new BusinessModel(data);
     //asignamos un código de unión para los empleados de la empresa
     newBusiness.code = v4();
+    //se asigna estado en falso a la empresa hasta que nos comuniquemos con ella
+    newBusiness.state = false;
     //guardamos la empresa
     await newBusiness.save();
 
@@ -57,15 +57,7 @@ class BusinessServices {
     await adminUser.save();
 
     //creo el payload del usuario y retorno el token firmado
-    return authServices.signToken({
-      role: 'admin',
-      mail: admin.mail,
-      name: admin.name,
-      sub: adminUser._id,
-      businessId: newBusiness._id,
-      businessName: data.name,
-      avatar: 'a-1',
-    });
+    return false;
   }
 
   /**
