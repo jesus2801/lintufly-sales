@@ -1,6 +1,7 @@
 import { rule, shield, allow } from 'graphql-shield';
 
 import { ServiceError } from '@utils/handler.errors';
+import { GraphQLError } from 'graphql';
 
 // regla para determinar si un usuario es admin
 const isAdmin = rule({ cache: 'contextual' })(
@@ -30,9 +31,15 @@ export default shield(
     },
   },
   {
-    fallbackError: (t) => {
-      if (t instanceof ServiceError) return new Error(t.code);
-      console.log(t);
+    //fallback que se ejecuta cuando hay errores
+    fallbackError: (e) => {
+      //si el errors es simplemente un error de los servicios, entonces retornamos el código
+      if (e instanceof ServiceError) return new Error(e.code);
+
+      //si el error es desconocido, entonces retornamos un graphql error
+      if (e instanceof Error) return new GraphQLError('Internal server error');
+
+      //el error por defecto significa que el usuario no tiene permisos
       return new Error('Forbidden');
     },
   },

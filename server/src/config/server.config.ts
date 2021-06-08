@@ -4,7 +4,7 @@ import fastify, { FastifyInstance } from 'fastify';
 import helmet from 'fastify-helmet';
 import mercurius from 'mercurius';
 
-import { errorController } from '@utils/handler.errors';
+import { errorController, notFoundController } from '@utils/handler.errors';
 
 import authServices from '@services/auth.services';
 
@@ -64,8 +64,12 @@ export class App {
       });
   }
 
+  /**
+   * Handlers de la aplicación
+   */
   public handlers() {
     this.app.setErrorHandler(errorController);
+    this.app.setNotFoundHandler(notFoundController);
   }
 
   /**

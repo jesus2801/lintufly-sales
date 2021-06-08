@@ -11,6 +11,9 @@ export interface IdInput {
   _id: string;
 }
 
+/**
+ * Interfaz para los códigos ingresados
+ */
 export interface CodeInterface {
   /**
    * Código
@@ -49,6 +52,9 @@ export interface NameInput {
   };
 }
 
+/**
+ * Interfaz que describe los posibles cambios a realizar en una empresa
+ */
 export interface BusinessUpdates {
   /**
    * Nombre de la empresa
@@ -124,6 +130,12 @@ export interface BusinessInfo {
  * @category Schema
  */
 export interface BusinessInput {
+  /**
+   * Información de la empresa a ingresar
+   */
   business: BusinessInfo;
+  /**
+   * Información del administrador de la empresa
+   */
   admin: Omit<EmployeeData, 'store' | 'business'>;
 }

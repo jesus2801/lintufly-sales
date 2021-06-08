@@ -1,7 +1,10 @@
-import * as mongoosePaginate from 'mongoose-paginate-v2';
+import mongoosePaginate from 'mongoose-paginate-v2';
 import { Schema, model, Document } from 'mongoose';
 import { IModel } from '@interfaces/schema';
 
+/**
+ * Interfaz del modelo de "Business"
+ */
 export interface IBusiness extends Document {
   /**
    * Nombre de la empresa

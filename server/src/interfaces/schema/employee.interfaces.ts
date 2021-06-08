@@ -1,3 +1,6 @@
+/**
+ * Información necesaria para el logueo de usuarios
+ */
 export interface LoginData {
   /**
    * Email del empleado

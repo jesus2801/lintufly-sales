@@ -3,6 +3,9 @@ import { Schema, model, Types, Document } from 'mongoose';
 import { EmployeeRole, AdminRole } from '@interfaces';
 import { IModel } from '@interfaces/schema';
 
+/**
+ * Interfaz del modelo de "Employee"
+ */
 export interface IEmployee extends Document {
   /**
    * Email del empleado

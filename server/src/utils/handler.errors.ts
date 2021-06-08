@@ -2,6 +2,8 @@ import { logger } from '@config/logger.config';
 import type { FastifyError, FastifyRequest, FastifyReply } from 'fastify';
 
 export const handlerErrors = (e: any, unknowError?: boolean): void => {
+  //TODO: terminar el manejador de errores
+
   //si es un objeto que no está vacio lo imprimo como json, sino entonces imprimo tal cual
   //el error
   logger.error(
@@ -18,7 +20,7 @@ export const handlerErrors = (e: any, unknowError?: boolean): void => {
 
 export const errorController = (
   e: FastifyError,
-  req: FastifyRequest,
+  {}: FastifyRequest,
   reply: FastifyReply,
 ) => {
   try {
@@ -29,6 +31,9 @@ export const errorController = (
     handlerErrors(e);
   }
 };
+
+export const notFoundController = (req: FastifyRequest, reply: FastifyReply) =>
+  reply.status(404).send('Not Found');
 
 export class ServiceError {
   public code: string;

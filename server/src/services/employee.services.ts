@@ -1,4 +1,3 @@
-import { Types } from 'mongoose';
 import { v4 } from 'uuid';
 import v from 'validator';
 

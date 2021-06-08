@@ -21,6 +21,11 @@ class AuthServices {
     }
   }
 
+  /**
+   * Servicio para firmar un token
+   * @param {UserPayload} payload información a ser firmada
+   * @returns {string} retorna el token firmado
+   */
   public signToken(payload: UserPayload): string {
     return jwt.sign(payload, config.server.secret, { expiresIn: '3h' });
   }
