@@ -1,18 +1,19 @@
 import { v4, validate } from 'uuid';
 import v from 'validator';
 
-import { EmployeeData } from '@interfaces/schema/employee.interfaces';
 import { BusinessInfo, BusinessUpdates } from '@interfaces/schema/business.interfaces';
+import { EmployeeData } from '@interfaces/schema/employee.interfaces';
+import { PaginateResults } from '@interfaces/schema';
 
 import { ServiceError } from '@utils/handler.errors';
+import errorCodes from '@utils/error.codes';
 
-import EmployeeModel from '@models/Employee.model';
 import BusinessModel, { IBusiness } from '@models/Business.model';
+import EmployeeModel from '@models/Employee.model';
+
+import authServices from './auth.services';
 
 import { hashPass } from '@functions';
-import authServices from './auth.services';
-import errorCodes from '@utils/error.codes';
-import { PaginateResults } from '@interfaces/schema';
 
 /**
  * Clase de servicios para las acciones con respecto a las empresas
@@ -118,9 +119,9 @@ class BusinessServices {
    * Servicio para buscar empresas de la plataforma
    * @param {string} name nombre a buscar en las empresas
    * @param {number} page página a buscar de ese nombre
-   * @returns
+   * @returns {PaginateResult<IBusiness>} retorno el resultado de la búsqueda
    */
-  public async search(name: string, page: number) {
+  public async search(name: string, page: number): Promise<PaginateResults<IBusiness>> {
     return await BusinessModel.paginate(
       { name: { $regex: name, $options: 'i' } },
       { page, limit: 15, select: '-state -code' },
