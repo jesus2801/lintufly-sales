@@ -1,13 +1,18 @@
 type Query {
+  "Loguear un empleado de una empresa"
   loginEmployee(input: LoginInput!): String!
 }
 
 type Mutation {
+  "Crear un nuevo empleado de una empresa"
   createEmployee(input: EmployeeInput!, key: String!): Boolean!
 }
 
+"Información necesaria para el logueo de un empleado"
 input LoginInput {
+  "Correo electronico del empleado"
   mail: String!
+  "Contraseña del empleado"
   pass: String!
 }
 
@@ -16,11 +21,17 @@ input LoginInput {
 #   employee
 # }
 
+"Información necesaria para crear un empleado"
 input EmployeeInput {
+  "Nombre del empleado"
   name: String!
+  "Id de la empresa del empleado"
   business: ID!
+  "Id de la tienda del empleado"
   store: ID
+  "Correo electronico del empleado"
   mail: String!
+  "Contraseña del empleado"
   pass: String!
 }
 
