@@ -1,44 +1,68 @@
-import { logger } from '@config/logger.config';
 import type { FastifyError, FastifyRequest, FastifyReply } from 'fastify';
 
-export const handlerErrors = (e: any, unknowError?: boolean): void => {
-  //TODO: terminar el manejador de errores
+import { rollbar } from '@config/rollbar.config';
+import { logger } from '@config/logger.config';
 
-  //si es un objeto que no está vacio lo imprimo como json, sino entonces imprimo tal cual
-  //el error
+//Loguear errores desconocidos
+const logUnknownErr = (e: any) => {
+  rollbar.error(e);
   logger.error(
     typeof e === 'object' ? (Object.keys(e).length === 0 ? e : JSON.stringify(e)) : e,
   );
-
-  if (process.env.NODE_ENV === 'dev') return;
-
-  //si el error de de sintaxis de tipado o desconocido reinicio el servidor
-  if (e instanceof SyntaxError || e instanceof TypeError || unknowError) {
-    process.exit(1);
-  }
 };
 
+export const handlerErrors = (e: any, unhandledErr?: boolean): void => {
+  //si el error es de tipo `Error` entonces lo reportamos a rollbar y lo logueamos
+  if (e instanceof Error) {
+    rollbar.error(e);
+    logger.error(
+      `message: ${e.message} \n Name: ${e.name} \n Stack: ${
+        e.stack
+      } \n json: ${JSON.stringify(e)}`,
+    );
+    return;
+  }
+
+  //si el error de de sintaxis de tipado o desconocido reinicio el servidor y lo reporto a rollbar
+  if (e instanceof SyntaxError || e instanceof TypeError || unhandledErr) {
+    rollbar.critical(e);
+    process.exit(1);
+  }
+
+  //Si el error no es de sintaxis o tipado, ni desconocido, ni de tipo `Error`
+  //entonces lo reporto a rollbar y lo logueo
+  logUnknownErr(e);
+};
+
+//controlador para manejar los errores de fastify
 export const errorController = (
   e: FastifyError,
   {}: FastifyRequest,
   reply: FastifyReply,
 ) => {
   try {
+    //enviar el error al manejador de errores
     handlerErrors(e);
 
+    //responder con un status de 500, indicando un error interno
     return reply.status(500).send({ error: 'Internal error' });
   } catch (e) {
+    //si hay algún error, enviarlo al manejador de errores
     handlerErrors(e);
   }
 };
 
+// controlador para las rutas no encontradas
 export const notFoundController = (req: FastifyRequest, reply: FastifyReply) =>
   reply.status(404).send('Not Found');
 
+// Clase de errores dentro de los servicios
 export class ServiceError {
+  //código que representa el error
   public code: string;
 
   constructor(code: string) {
+    //asignamos el código
     this.code = code;
   }
 }
