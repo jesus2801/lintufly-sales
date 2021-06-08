@@ -18,6 +18,8 @@
       "@interfaces/*": ["src/interfaces/*"],
       "@utils/*": ["src/utils/*"],
       "@templates/*": ["src/components/templates/*"],
+      "@organisms/*": ["src/components/organisms/*"],
+      "@atoms/*": ["src/components/atoms/*"],
       "@styles/*": ["src/styles/*"],
     }
   },

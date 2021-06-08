@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Layout from '@templates/Layout';
+import BusinessSection from '@organisms/login/business-section/BusinessSection';
 
 const Register = () => {
   /*
@@ -19,7 +20,7 @@ const Register = () => {
   */
   return (
     <Layout title="Registrarse">
-      <h1>Hello world in register page</h1>
+      <BusinessSection />
     </Layout>
   );
 };
