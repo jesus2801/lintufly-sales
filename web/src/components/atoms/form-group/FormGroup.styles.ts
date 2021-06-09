@@ -11,9 +11,22 @@ export const FormGroupDiv = styled.div`
 
   margin-bottom: ${(props: FormGroupThemeProps) => props.theme.margin || '20px'};
 
-  label {
-    font-size: 14px;
-    color: var(--black);
+  .label-ctn {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
     margin-bottom: 4px;
+
+    label {
+      font-size: 14px;
+      color: var(--black);
+      margin-right: 4px;
+    }
+
+    img {
+      width: 14px;
+      margin-right: 8px;
+    }
   }
 `;

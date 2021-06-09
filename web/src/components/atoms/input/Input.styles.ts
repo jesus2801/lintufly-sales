@@ -26,6 +26,10 @@ export const InputStyles = styled.div`
       width: 100%;
     }
 
+    &.invalid + div {
+      background-color: red;
+    }
+
     &.icon {
       padding: 4px 4px 4px 25px;
     }

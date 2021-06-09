@@ -25,7 +25,7 @@ export interface InputProps
     HTMLInputElement
   > {
   icon?: ReactNode;
-  addRef?: MutableRefObject<HTMLInputElement>;
+  addRef?: MutableRefObject<HTMLInputElement | null>;
 }
 
 export interface FormGroupProps
@@ -33,5 +33,15 @@ export interface FormGroupProps
   label?: string;
   HtmlFor?: string;
   margin?: string;
+  info?: string;
+  children: ReactNode;
+}
+
+export interface ButtonProps
+  extends DetailedHTMLProps<
+    React.ButtonHTMLAttributes<HTMLButtonElement>,
+    HTMLButtonElement
+  > {
+  buttonType: 'submit';
   children: ReactNode;
 }
