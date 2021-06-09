@@ -22,7 +22,8 @@
       "@organisms/*": ["src/components/organisms/*"],
       "@atoms/*": ["src/components/atoms/*"],
       "@styles/*": ["src/styles/*"],
-      "@context/*": ["src/context/*"]
+      "@context/*": ["src/context/*"],
+      "@functions/*": ["src/functions/*"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

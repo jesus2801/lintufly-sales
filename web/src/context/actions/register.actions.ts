@@ -2,6 +2,7 @@ import {
   SET_BUSINESS_MAIL,
   SET_BUSINESS_NAME,
   SET_CURRENCY,
+  SET_IMAGES,
   SET_PHONE,
 } from '@context/types/register.types';
 import { Dispatch } from 'redux';
@@ -38,6 +39,15 @@ export const setPhone = (phone: string | null) => {
     dispatch({
       type: SET_PHONE,
       payload: phone,
+    });
+  };
+};
+
+export const setImages = (images: File[]) => {
+  return (dispatch: Dispatch) => {
+    dispatch({
+      type: SET_IMAGES,
+      payload: images,
     });
   };
 };

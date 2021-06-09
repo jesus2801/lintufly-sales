@@ -58,7 +58,26 @@ export const PhotosCtn = styled.div`
         background-color: var(--grey);
         height: 100%;
         border-radius: 6px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
       }
+    }
+  }
+`;
+
+export const DescriptionText = styled.div`
+  width: 100%;
+
+  p {
+    width: 60%;
+    color: var(--black);
+    text-align: left;
+    font-size: 15px;
+
+    b {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
     }
   }
 `;
