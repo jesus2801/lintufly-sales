@@ -3,9 +3,9 @@ import React, { ChangeEvent, useRef } from 'react';
 
 import { setImages } from '@context/actions/register.actions';
 
-import { showErr } from '@functions/alerts.functions';
-
 import { AppCtx } from '@interfaces/context.interfaces';
+
+import { showErr } from '@functions/alerts.functions';
 
 import Button from '@atoms/button/Button';
 import Title from '@atoms/title/Title';
@@ -19,7 +19,7 @@ const acceptedFormats = ['image/png', 'image/jpeg', 'image/jpg', 'image/webp'];
 const PhotosSection = () => {
   const { images } = useSelector((state: AppCtx) => state.register);
 
-  //referencia del primer input con el fin de hacerle focus cuando cargue la página
+  //referencia del input de tipo file
   const inputRef = useRef(null as null | HTMLInputElement);
   //referencias de los contenedores de las fotos
   const firstPhoto = useRef(null as null | HTMLDivElement);

@@ -1,10 +1,12 @@
 import React, { ChangeEvent, useEffect, useRef } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 //TODO: crear los tipados de este módulo, dado que no están en npm
 //@ts-ignore
 import PhonesInput from 'react-intl-tel-input';
 import isEmail from 'validator/lib/isEmail';
 
 import { CountryResponse } from '@interfaces/libraries/phone.number';
+import { AppCtx } from '@interfaces/context.interfaces';
 
 import { preferredCountries } from '@utils/variables';
 
@@ -14,55 +16,69 @@ import Title from '@atoms/title/Title';
 import Input from '@atoms/input/Input';
 import Svg from '@atoms/Svg';
 
-import { BusinessSectionDiv, FormContainer, FormDiv } from './BusinessSections.styles';
-import 'react-intl-tel-input/dist/main.css';
-import { useDispatch, useSelector } from 'react-redux';
 import {
   setBusinessMail,
   setBusinessName,
   setCurrency,
   setPhone,
 } from '@context/actions/register.actions';
-import { AppCtx } from '@interfaces/context.interfaces';
+
+import { BusinessSectionDiv, FormContainer, FormDiv } from './BusinessSections.styles';
+import 'react-intl-tel-input/dist/main.css';
 
 const BusinessSection = () => {
+  //referencia del primer input con el fin de hacerle focus cuando cargue la página
   const firstInput = useRef(null as null | HTMLInputElement);
+  // número de telefono y nombre de la empresa extraidos del state principal
   const { phone, businessName } = useSelector((state: AppCtx) => state.register);
 
+  //dispatch para disparar actions
   const dispatch = useDispatch();
 
+  //use effect, para que apenas carque la referencia del primer input, hacerle focus
   useEffect(() => {
     if (firstInput.current) firstInput.current.focus({ preventScroll: true });
   }, [firstInput]);
 
+  //hanlder del evento change del número de telefono de la empresa
   const handlePhone = (
     isValid: boolean,
     {}: string,
     {}: CountryResponse,
     completePhone: string,
   ) => {
+    //si el teléfono es válido, lo seteamos en el state
     if (isValid) {
       dispatch(setPhone(completePhone));
+
+      //si el teléfono no es válido y está en el state, lo cambiamos por un `null`
     } else if (phone !== null) {
       dispatch(setPhone(null));
     }
   };
 
+  //hanlder del evento change del nombre de la empresa
   const handleName = (e: ChangeEvent<HTMLInputElement>) => {
+    //seteamos el nombre de la empresa en el state principal
     dispatch(setBusinessName(e.currentTarget.value));
   };
 
+  //handler del evento change del email de la empresa
   const handleMail = (e: ChangeEvent<HTMLInputElement>) => {
+    //guardamos y seteamos el valor en el state principal
     const value = e.currentTarget.value;
     dispatch(setBusinessMail(value));
 
+    //si el email es válido le quitamos la clase `invalid`
     if (isEmail(value)) {
       e.currentTarget.classList.remove('invalid');
+      //si el email es inválido le agregamos la clase `invalid`
     } else {
       e.currentTarget.classList.add('invalid');
     }
   };
 
+  //handler del evento change de la moneda de la empresa
   const handleCurrency = (e: ChangeEvent<HTMLInputElement>) => {
     dispatch(setCurrency(e.currentTarget.value));
   };
@@ -142,6 +158,7 @@ const BusinessSection = () => {
           <Button
             buttonType="submit"
             onClick={() => {
+              //mandamos la pantalla del usuario a la siguiente sección
               document
                 .getElementById('photos-section')!
                 .scrollIntoView({ behavior: 'smooth' });
