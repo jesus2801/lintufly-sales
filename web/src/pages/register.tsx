@@ -2,15 +2,12 @@ import React from 'react';
 
 import Layout from '@templates/Layout';
 import BusinessSection from '@organisms/login/business-section/BusinessSection';
+import PhotosSection from '@organisms/login/photos-section/PhotosSection';
 
 const Register = () => {
   /*
   TODO:
   Company:
-  Name
-  mail
-  currency
-  phones
   imgs
 
   Admin:
@@ -21,6 +18,7 @@ const Register = () => {
   return (
     <Layout title="Registrarse">
       <BusinessSection />
+      <PhotosSection />
     </Layout>
   );
 };

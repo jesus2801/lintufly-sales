@@ -139,7 +139,16 @@ const BusinessSection = () => {
             />
           </FormGroup>
 
-          <Button buttonType="submit">Siguiente paso</Button>
+          <Button
+            buttonType="submit"
+            onClick={() => {
+              document
+                .getElementById('photos-section')!
+                .scrollIntoView({ behavior: 'smooth' });
+            }}
+          >
+            Siguiente paso
+          </Button>
         </FormDiv>
       </FormContainer>
     </BusinessSectionDiv>
