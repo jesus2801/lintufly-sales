@@ -21,9 +21,12 @@
       "@templates/*": ["src/components/templates/*"],
       "@organisms/*": ["src/components/organisms/*"],
       "@atoms/*": ["src/components/atoms/*"],
+      "@molecules/*": ["src/components/molecules/*"],
       "@styles/*": ["src/styles/*"],
       "@context/*": ["src/context/*"],
       "@functions/*": ["src/functions/*"],
+      "@config/*": ["src/config/*"],
+      "@graphql/*": ["src/graphql/*"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

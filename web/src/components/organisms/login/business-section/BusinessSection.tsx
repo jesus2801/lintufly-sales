@@ -23,8 +23,9 @@ import {
   setPhone,
 } from '@context/actions/register.actions';
 
-import { BusinessSectionDiv, FormContainer, FormDiv } from './BusinessSections.styles';
+import { BusinessSectionDiv, FormContainer } from './BusinessSections.styles';
 import 'react-intl-tel-input/dist/main.css';
+import FormDiv from 'src/components/molecules/FormDiv';
 
 const BusinessSection = () => {
   //referencia del primer input con el fin de hacerle focus cuando cargue la página
@@ -87,7 +88,7 @@ const BusinessSection = () => {
     <BusinessSectionDiv>
       <Svg path="/static/images/business-man" />
       <FormContainer>
-        <FormDiv>
+        <FormDiv className="business-form">
           <Title>Registra a tu empresa</Title>
 
           <FormGroup

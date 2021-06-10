@@ -6,6 +6,9 @@ import {
   SET_IMAGES,
   SET_CURRENCY,
   SET_PHONE,
+  SET_MAIL,
+  SET_NAME,
+  SET_PASS,
 } from '../types/register.types';
 
 const initState: RegisterCtx = {
@@ -49,6 +52,24 @@ const reducer = (state = initState, action: AppActions): RegisterCtx => {
       return {
         ...state,
         phone: action.payload,
+      };
+
+    case SET_MAIL:
+      return {
+        ...state,
+        mail: action.payload,
+      };
+
+    case SET_NAME:
+      return {
+        ...state,
+        name: action.payload,
+      };
+
+    case SET_PASS:
+      return {
+        ...state,
+        pass: action.payload,
       };
 
     default:

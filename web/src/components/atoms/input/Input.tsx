@@ -10,10 +10,10 @@ const Input = ({ icon, addRef, type, ...rest }: InputProps) => {
       {icon ? (
         <>
           {icon}
-          <input type={type || 'text'} className="icon" {...rest} />
+          <input type={type || 'text'} ref={addRef} className="icon" {...rest} />
         </>
       ) : (
-        <input ref={addRef} {...rest} />
+        <input type={type} ref={addRef} {...rest} />
       )}
       <div></div>
     </InputStyles>

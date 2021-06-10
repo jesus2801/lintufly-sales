@@ -1,9 +1,9 @@
 import styled from '@emotion/styled';
 
-export const BusinessSectionDiv = styled.div`
+export const AdminSectionDiv = styled.div`
   box-sizing: border-box;
-  width: 93%;
-  margin: 20px auto 0 auto;
+  width: 90%;
+  margin: 140px auto 0 auto;
 
   display: flex;
   flex-direction: row;
@@ -16,24 +16,11 @@ export const BusinessSectionDiv = styled.div`
   }
 `;
 
-export const FormContainer = styled.div`
+export const FormSection = styled.div`
   box-sizing: border-box;
   width: 50%;
-
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
-  .business-form {
-    .intl-tel-input,
-    .input-phone {
-      width: 100%;
-    }
-
-    h2 {
-      margin: 0;
-      margin-bottom: 20px;
-    }
-  }
 `;

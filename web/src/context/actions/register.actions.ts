@@ -4,6 +4,9 @@ import {
   SET_CURRENCY,
   SET_IMAGES,
   SET_PHONE,
+  SET_MAIL,
+  SET_NAME,
+  SET_PASS,
 } from '@context/types/register.types';
 import { Dispatch } from 'redux';
 
@@ -48,6 +51,33 @@ export const setImages = (images: File[]) => {
     dispatch({
       type: SET_IMAGES,
       payload: images,
+    });
+  };
+};
+
+export const setName = (name: string) => {
+  return (dispatch: Dispatch) => {
+    dispatch({
+      type: SET_NAME,
+      payload: name,
+    });
+  };
+};
+
+export const setMail = (mail: string) => {
+  return (dispatch: Dispatch) => {
+    dispatch({
+      type: SET_MAIL,
+      payload: mail,
+    });
+  };
+};
+
+export const setPass = (pass: string) => {
+  return (dispatch: Dispatch) => {
+    dispatch({
+      type: SET_PASS,
+      payload: pass,
     });
   };
 };
