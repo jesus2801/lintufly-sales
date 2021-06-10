@@ -1,7 +1,7 @@
+import { useDispatch, useSelector } from 'react-redux';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { useMutation } from '@apollo/client';
 import isEmail from 'validator/lib/isEmail';
-import { useDispatch, useSelector } from 'react-redux';
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import { v4 } from 'uuid';
@@ -120,7 +120,7 @@ const SubmitSection = () => {
 
       handleLoading(true, 'Creando empresa');
       //respuesta de graphql
-      const response = await createBusiness({
+      await createBusiness({
         variables: {
           businessInput: {
             name: businessName,
