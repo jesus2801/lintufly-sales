@@ -4,14 +4,16 @@ import v from 'validator';
 import { EmployeeData } from '@interfaces/schema/employee.interfaces';
 
 import EmployeeModel, { IEmployee } from '@models/Employee.model';
-import BusinessModel from '@models/Employee.model';
+import StoreModel, { IStore } from '@models/Store.model';
+import BusinessModel from '@models/Business.model';
+
+import { ServiceError } from '@utils/handler.errors';
+import errorCodes from '@utils/error.codes';
 
 import { comparePass, hashPass } from '@functions';
 
 import eventEmmiter from '@events/event.emitter';
 
-import { ServiceError } from '@utils/handler.errors';
-import errorCodes from '@utils/error.codes';
 import authServices from './auth.services';
 
 /**
@@ -66,17 +68,24 @@ class EmployeeServices {
     //si la contraseña no es correcta retorno credenciales inválidas
     if (!isValid) throw new ServiceError(errorCodes.invalidCredentials);
 
+    //buscamos el nombre de la empresa
+    const business = await BusinessModel.findById(user.business).select('name');
+
+    //buscamos el nombre del local al que pertenece (si está en un local)
+    let store: null | IStore = null;
+    if (user.store) store = await StoreModel.findById(user.store).select('name');
+
     //creo el payload del usuario y retorno el token firmado
     return authServices.signToken({
       role: user.role,
       mail: user.mail,
       name: user.name,
       sub: user._id,
-      businessId: '',
-      businessName: '',
-      storeId: '',
-      storeName: '',
-      avatar: '',
+      businessId: user.business,
+      businessName: business!.name,
+      storeId: user.store,
+      storeName: store ? store.name : undefined,
+      avatar: user.avatar,
     });
   }
 }

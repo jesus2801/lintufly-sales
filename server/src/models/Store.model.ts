@@ -1,4 +1,28 @@
-import { Schema, model, Types } from 'mongoose';
+import { Schema, model, Types, Document } from 'mongoose';
+
+import { IModel } from '@interfaces/schema';
+
+/**
+ * Interfaz del modelo "store"
+ */
+export interface IStore extends Document {
+  /**
+   * Nombre de la tienda o local
+   */
+  name: string;
+  /**
+   * Empresa a la que pertenece la tienda o local
+   */
+  business: string;
+  /**
+   * dirección de la tienda o local
+   */
+  dir: string;
+  /**
+   * Descripción sobre la tienda o local
+   */
+  desc: string;
+}
 
 /**
  * Schema de los locales o tiendas de las empresas
@@ -24,4 +48,4 @@ const storeSchema = new Schema({
   },
 });
 
-export default model('Store', storeSchema);
+export default model<IStore>('Store', storeSchema) as IModel<IStore>;
