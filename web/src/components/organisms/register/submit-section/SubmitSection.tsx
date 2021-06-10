@@ -7,7 +7,6 @@ import { useRouter } from 'next/router';
 import { v4 } from 'uuid';
 
 import { handleLoading, showErr, success } from '@functions/alerts.functions';
-import { switchErrorCode } from '@functions/validate.functions';
 
 import firebaseInstance from '@config/firebase.instance';
 
@@ -156,22 +155,7 @@ const SubmitSection = () => {
         },
       );
     } catch (e) {
-      //si hay un código de graphql, mostramos su error correspondiente
-      if (
-        e.ServerError &&
-        e.ServerError.result &&
-        e.ServerError.result.errors &&
-        e.ServerError.result.errors[0] &&
-        e.ServerError.result.errors[0].message
-      ) {
-        showErr(switchErrorCode(e.ServerError.result.errors[0].message));
-        return;
-      }
-
-      //si el error es desconocido, mostramos este mensaje
-      showErr(
-        'Lo sentimos, ha ocurrido un error inesperado, por favor intenta más tarde',
-      );
+      
     }
   };
 

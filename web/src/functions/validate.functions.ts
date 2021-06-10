@@ -1,4 +1,5 @@
 import errorCodes from '@utils/error.codes';
+import { showErr } from './alerts.functions';
 
 const tryAgain = ', por favor, intente de nuevo o más tarde';
 
@@ -40,4 +41,32 @@ export const switchErrorCode = (errCode: string): string => {
     default:
       return 'Lo sentimos, ha ocurrido un error inesperado, por favor, intenta más tarde';
   }
+};
+
+export const handlerRequestErr = (e: any) => {
+  //si hay un código de graphql, mostramos su error correspondiente
+  if (
+    e.ServerError &&
+    e.ServerError.result &&
+    e.ServerError.result.errors &&
+    e.ServerError.result.errors[0] &&
+    e.ServerError.result.errors[0].message
+  ) {
+    showErr(switchErrorCode(e.ServerError.result.errors[0].message));
+    return;
+  }
+
+  if (
+    e.networkError &&
+    e.networkError.result &&
+    e.networkError.result.errors &&
+    e.networkError.result.errors[0] &&
+    e.networkError.result.errors[0].message
+  ) {
+    showErr(switchErrorCode(e.networkError.result.errors[0].message));
+    return;
+  }
+
+  //si el error es desconocido, mostramos este mensaje
+  showErr('Lo sentimos, ha ocurrido un error inesperado, por favor intenta más tarde');
 };
