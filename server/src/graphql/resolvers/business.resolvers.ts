@@ -41,8 +41,11 @@ export default {
   },
 
   Mutation: {
-    createBusiness: async ({}, { business, admin }: BusinessInput): Promise<boolean> => {
-      return await businessServices.create(business, admin);
+    createBusiness: async (
+      {},
+      { business, admin, recaptcha }: BusinessInput,
+    ): Promise<boolean> => {
+      return await businessServices.create(business, admin, recaptcha);
     },
 
     updateBusiness: async (

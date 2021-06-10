@@ -3,6 +3,7 @@ import { makeExecutableSchema } from 'graphql-tools';
 import fastify, { FastifyInstance } from 'fastify';
 import helmet from 'fastify-helmet';
 import mercurius from 'mercurius';
+import cors from 'fastify-cors';
 
 import { errorController, notFoundController } from '@utils/handler.errors';
 
@@ -43,6 +44,11 @@ export class App {
    * Middlewares de la aplicación
    */
   private middlewares() {
+    this.app.register(cors, {
+      methods: ['POST', 'PUT', 'DELETE', 'OPTIONS'],
+      optionsSuccessStatus: 204,
+    });
+
     this.app.register(mercurius, {
       schema: applyMiddleware(
         makeExecutableSchema({

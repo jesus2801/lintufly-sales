@@ -138,4 +138,8 @@ export interface BusinessInput {
    * Información del administrador de la empresa
    */
   admin: Omit<EmployeeData, 'store' | 'business'>;
+  /**
+   * Token del recaptcha para verificar que no es un robot
+   */
+  recaptcha: string;
 }

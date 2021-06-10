@@ -69,9 +69,11 @@
   "author": "Jesús García",
   "license": "UNLICENSED",
   "dependencies": {
+    "axios": "^0.21.1",
     "bcrypt": "^5.0.1",
     "dotenv": "^10.0.0",
     "fastify": "^3.17.0",
+    "fastify-cors": "^6.0.1",
     "fastify-helmet": "^5.3.1",
     "geoip-lite": "^1.4.2",
     "graphql": "^15.5.0",

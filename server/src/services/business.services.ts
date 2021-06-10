@@ -1,17 +1,20 @@
 import { v4, validate } from 'uuid';
+import axios from 'axios';
 import v from 'validator';
 
 import { BusinessInfo, BusinessUpdates } from '@interfaces/schema/business.interfaces';
 import { EmployeeData } from '@interfaces/schema/employee.interfaces';
 import { PaginateResults } from '@interfaces/schema';
 
-import { ServiceError } from '@utils/handler.errors';
+import { handlerErrors, ServiceError } from '@utils/handler.errors';
 import errorCodes from '@utils/error.codes';
 
 import BusinessModel, { IBusiness } from '@models/Business.model';
 import EmployeeModel from '@models/Employee.model';
 
 import { hashPass } from '@functions';
+
+import config from '@config';
 
 /**
  * Clase de servicios para las acciones con respecto a las empresas
@@ -26,12 +29,34 @@ class BusinessServices {
   public async create(
     data: BusinessInfo,
     admin: Omit<EmployeeData, 'store' | 'business'>,
+    recaptcha: string,
   ): Promise<boolean> {
     //validar los email de la empresa y el empleado
     if (!v.isEmail(data.mail) || !v.isEmail(admin.mail))
       throw new ServiceError(errorCodes.invalidEmail);
 
+    //si la contraseña tiene menos de 6 carácteres es inválida
     if (admin.pass.length < 6) throw new ServiceError(errorCodes.invalidPass);
+
+    //si no hay telefonos retrocedemos
+    if (data.phones.length === 0) throw new ServiceError(errorCodes.noBusinessPhone);
+
+    //si no hay fotos retrocedemos
+    if (data.imgs.length === 0) throw new ServiceError(errorCodes.noBusinessImgs);
+
+    //respuesta de google recaptcha
+    const response = await axios.post(
+      'https://www.google.com/recaptcha/api/siteverify?',
+      `secret=${config.server.recaptchaKey}&response=${recaptcha}`,
+      {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+      },
+    );
+
+    //verficamos que la respuesta de google sea positiva
+    if (!response.data.success) throw new ServiceError(errorCodes.invalidRecaptcha);
 
     //creamos la nueva empresa
     const newBusiness = new BusinessModel(data);
@@ -40,7 +65,17 @@ class BusinessServices {
     //se asigna estado en falso a la empresa hasta que nos comuniquemos con ella
     newBusiness.state = false;
     //guardamos la empresa
-    await newBusiness.save();
+    try {
+      await newBusiness.save();
+    } catch (e) {
+      if (e.name === 'MongoError' && e.code === 11000) {
+        if (Object.keys(e.keyValue)[0] === 'name')
+          throw new ServiceError(errorCodes.duplicate.businessName);
+
+        if (Object.keys(e.keyValue)[0] === 'mail')
+          throw new ServiceError(errorCodes.duplicate.businessMail);
+      }
+    }
 
     //creamos el usuario
     const adminUser = new EmployeeModel();
@@ -51,10 +86,17 @@ class BusinessServices {
     adminUser.pass = await hashPass(admin.pass);
     adminUser.role = 'admin';
     adminUser.avatar = 'a-1';
-    adminUser.code = 'code';
+    adminUser.code = v4();
     adminUser.union = Date.now();
-    //guardamos el usuario
-    await adminUser.save();
+    try {
+      //guardamos el usuario
+      await adminUser.save();
+    } catch (e) {
+      newBusiness.delete().catch((e: any) => handlerErrors(e));
+
+      if (e.name === 'MongoError' && e.code === 11000)
+        throw new ServiceError(errorCodes.duplicate.employeeMail);
+    }
 
     //creo el payload del usuario y retorno el token firmado
     return false;

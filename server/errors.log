@@ -1,3 +1,83 @@
 2021-06-07T18:37:22.982Z [31merror[39m: [ERR] It seems like you have applied rules to Query.loginEmployee, Query.createEmployee fields but Shield cannot find them in your schema.
 2021-06-07T18:39:56.183Z [31merror[39m: [ERR] Query.loginEmployee defined in resolvers, but not in schema
 2021-06-07T20:08:36.242Z [31merror[39m: [ERR] Mutation.createStore defined in resolvers, but not in schema
+2021-06-09T19:16:31.155Z [31merror[39m: [ERR] message: E11000 duplicate key error collection: lintufly.employees index: mail_1 dup key: { mail: "otherMail@gmail.com" } 
+ Name: MongoError 
+ Stack: MongoError: E11000 duplicate key error collection: lintufly.employees index: mail_1 dup key: { mail: "otherMail@gmail.com" }
+    at Function.create (C:\Users\Jesus\Desktop\Lintufly-sales\server\node_modules\mongodb\lib\core\error.js:57:12)
+    at toError (C:\Users\Jesus\Desktop\Lintufly-sales\server\node_modules\mongodb\lib\utils.js:130:22)
+    at C:\Users\Jesus\Desktop\Lintufly-sales\server\node_modules\mongodb\lib\operations\common_functions.js:258:39
+    at handler (C:\Users\Jesus\Desktop\Lintufly-sales\server\node_modules\mongodb\lib\core\sdam\topology.js:943:24)
+    at C:\Users\Jesus\Desktop\Lintufly-sales\server\node_modules\mongodb\lib\cmap\connection_pool.js:350:13
+    at handleOperationResult (C:\Users\Jesus\Desktop\Lintufly-sales\server\node_modules\mongodb\lib\core\sdam\server.js:558:5)
+    at MessageStream.messageHandler (C:\Users\Jesus\Desktop\Lintufly-sales\server\node_modules\mongodb\lib\cmap\connection.js:281:5)
+    at MessageStream.emit (node:events:376:20)
+    at MessageStream.EventEmitter.emit (node:domain:470:12)
+    at processIncomingData (C:\Users\Jesus\Desktop\Lintufly-sales\server\node_modules\mongodb\lib\cmap\message_stream.js:144:12)
+    at MessageStream._write (C:\Users\Jesus\Desktop\Lintufly-sales\server\node_modules\mongodb\lib\cmap\message_stream.js:42:5)
+    at writeOrBuffer (node:internal/streams/writable:388:12)
+    at MessageStream.Writable.write (node:internal/streams/writable:333:10)
+    at Socket.ondata (node:internal/streams/readable:715:22)
+    at Socket.emit (node:events:376:20)
+    at Socket.EventEmitter.emit (node:domain:470:12) 
+ json: {"driver":true,"name":"MongoError","index":0,"code":11000,"keyPattern":{"mail":1},"keyValue":{"mail":"otherMail@gmail.com"}}
+2021-06-09T19:22:03.559Z [31merror[39m: [ERR] message: E11000 duplicate key error collection: lintufly.employees index: mail_1 dup key: { mail: "otherMail@gmail.com" } 
+ Name: MongoError 
+ Stack: MongoError: E11000 duplicate key error collection: lintufly.employees index: mail_1 dup key: { mail: "otherMail@gmail.com" }
+    at Function.create (C:\Users\Jesus\Desktop\Lintufly-sales\server\node_modules\mongodb\lib\core\error.js:57:12)
+    at toError (C:\Users\Jesus\Desktop\Lintufly-sales\server\node_modules\mongodb\lib\utils.js:130:22)
+    at C:\Users\Jesus\Desktop\Lintufly-sales\server\node_modules\mongodb\lib\operations\common_functions.js:258:39
+    at handler (C:\Users\Jesus\Desktop\Lintufly-sales\server\node_modules\mongodb\lib\core\sdam\topology.js:943:24)
+    at C:\Users\Jesus\Desktop\Lintufly-sales\server\node_modules\mongodb\lib\cmap\connection_pool.js:350:13
+    at handleOperationResult (C:\Users\Jesus\Desktop\Lintufly-sales\server\node_modules\mongodb\lib\core\sdam\server.js:558:5)
+    at MessageStream.messageHandler (C:\Users\Jesus\Desktop\Lintufly-sales\server\node_modules\mongodb\lib\cmap\connection.js:281:5)
+    at MessageStream.emit (node:events:376:20)
+    at MessageStream.EventEmitter.emit (node:domain:470:12)
+    at processIncomingData (C:\Users\Jesus\Desktop\Lintufly-sales\server\node_modules\mongodb\lib\cmap\message_stream.js:144:12)
+    at MessageStream._write (C:\Users\Jesus\Desktop\Lintufly-sales\server\node_modules\mongodb\lib\cmap\message_stream.js:42:5)
+    at writeOrBuffer (node:internal/streams/writable:388:12)
+    at MessageStream.Writable.write (node:internal/streams/writable:333:10)
+    at Socket.ondata (node:internal/streams/readable:715:22)
+    at Socket.emit (node:events:376:20)
+    at Socket.EventEmitter.emit (node:domain:470:12) 
+ json: {"driver":true,"name":"MongoError","index":0,"code":11000,"keyPattern":{"mail":1},"keyValue":{"mail":"otherMail@gmail.com"}}
+2021-06-09T20:31:54.929Z [31merror[39m: [ERR] message: Unknown type "Upload". Did you mean "Float"? 
+ Name: Error 
+ Stack: Error: Unknown type "Upload". Did you mean "Float"?
+    at assertValidSDL (C:\Users\Jesus\Desktop\Lintufly-sales\server\node_modules\graphql\validation\validate.js:107:11)
+    at Object.buildASTSchema (C:\Users\Jesus\Desktop\Lintufly-sales\server\node_modules\graphql\utilities\buildASTSchema.js:45:34)
+    at buildSchemaFromTypeDefinitions (C:\Users\Jesus\Desktop\Lintufly-sales\server\dist\schema\src\buildSchemaFromTypeDefinitions.js:12:18)
+    at Object.makeExecutableSchema (C:\Users\Jesus\Desktop\Lintufly-sales\server\dist\schema\src\makeExecutableSchema.js:107:32)
+    at App.middlewares (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\config\server.config.ts:48:9)
+    at new App (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\config\server.config.ts:38:10)
+    at C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:29:17
+    at step (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:33:23)
+    at Object.next (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:14:53)
+    at C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:4:12)
+    at C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:27:2
+    at Object.<anonymous> (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:54:3)
+    at Module._compile (node:internal/modules/cjs/loader:1102:14)
+    at Module.m._compile (C:\Users\Jesus\Desktop\Lintufly-sales\server\node_modules\ts-node\src\index.ts:1295:23) 
+ json: {}
+2021-06-09T23:45:51.162Z [31merror[39m: [ERR] message: Unknown type "Upload". Did you mean "Float"? 
+ Name: Error 
+ Stack: Error: Unknown type "Upload". Did you mean "Float"?
+    at assertValidSDL (C:\Users\Jesus\Desktop\Lintufly-sales\server\node_modules\graphql\validation\validate.js:107:11)
+    at Object.buildASTSchema (C:\Users\Jesus\Desktop\Lintufly-sales\server\node_modules\graphql\utilities\buildASTSchema.js:45:34)
+    at buildSchemaFromTypeDefinitions (C:\Users\Jesus\Desktop\Lintufly-sales\server\dist\schema\src\buildSchemaFromTypeDefinitions.js:12:18)
+    at Object.makeExecutableSchema (C:\Users\Jesus\Desktop\Lintufly-sales\server\dist\schema\src\makeExecutableSchema.js:107:32)
+    at App.middlewares (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\config\server.config.ts:54:9)
+    at new App (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\config\server.config.ts:39:10)
+    at C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:29:17
+    at step (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:33:23)
+    at Object.next (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:14:53)
+    at C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:4:12)
+    at C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:27:2
+    at Object.<anonymous> (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:54:3)
+    at Module._compile (node:internal/modules/cjs/loader:1102:14)
+    at Module.m._compile (C:\Users\Jesus\Desktop\Lintufly-sales\server\node_modules\ts-node\src\index.ts:1295:23) 
+ json: {}
