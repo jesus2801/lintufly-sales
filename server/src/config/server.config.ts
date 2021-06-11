@@ -5,7 +5,11 @@ import helmet from 'fastify-helmet';
 import mercurius from 'mercurius';
 import cors from 'fastify-cors';
 
-import { errorController, notFoundController } from '@utils/handler.errors';
+import {
+  errorController,
+  handlerErrors,
+  notFoundController,
+} from '@utils/handler.errors';
 
 import authServices from '@services/auth.services';
 
@@ -87,8 +91,7 @@ export class App {
       await initConn();
       await this.app.listen(this.port, '0.0.0.0');
     } catch (e) {
-      this.app.log.error(e);
-      process.exit(1);
+      handlerErrors(e, true);
     }
   }
 }

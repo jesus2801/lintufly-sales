@@ -12,4 +12,7 @@ export default {
     employeeMail: 'duplicate employee mail',
   },
   invalidRecaptcha: 'invalid recaptcha',
+  employeeInactive: 'employee inactive',
+  businessInactive: 'business inactive',
+  employeeDontHaveBusiness: 'employee dont have business',
 };

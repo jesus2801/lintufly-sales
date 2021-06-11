@@ -11,7 +11,8 @@ import '@config/env.config';
 import { logger } from '@config/logger.config';
 import Master from '@config/clusters.config';
 import { App } from '@config/server.config';
-import { handlerErrors } from 'utils/handler.errors';
+
+import { handlerErrors } from '@utils/handler.errors';
 
 // handlear cuando no hay un reject
 process.on('unhandledRejection', (e) => {
@@ -35,9 +36,7 @@ process.on('uncaughtException', (e) => {
     const master = new Master({ cluster: cluster });
 
     //levantamos un worker por cada cpu
-    for (let i = 0; i < cpusLength; i++) {
-      master.levantarWorker();
-    }
+    for (let i = 0; i < cpusLength; i++) master.levantarWorker();
 
     cluster.on('exit', (worker) => {
       logger.error(`Cluster number: ${worker.id} is dead`);

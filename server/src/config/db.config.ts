@@ -19,7 +19,6 @@ export const initConn = async () => {
     logger.info('MongoDB is conected');
   } catch (e) {
     // si hay un error lo paso al manejador y me salgo
-    handlerErrors(e);
-    process.exit(1);
+    handlerErrors(e, true);
   }
 };

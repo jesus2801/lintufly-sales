@@ -17,11 +17,11 @@ export interface IStore extends Document {
   /**
    * dirección de la tienda o local
    */
-  dir: string;
+  dir?: string;
   /**
    * Descripción sobre la tienda o local
    */
-  desc: string;
+  desc?: string;
 }
 
 /**

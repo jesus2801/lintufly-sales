@@ -5,13 +5,13 @@ import { logger } from '@config/logger.config';
 
 //Loguear errores desconocidos
 const logUnknownErr = (e: any) => {
-  rollbar.error(e);
   logger.error(
     typeof e === 'object' ? (Object.keys(e).length === 0 ? e : JSON.stringify(e)) : e,
   );
 };
 
 export const handlerErrors = (e: any, unhandledErr?: boolean): void => {
+  console.log('entrandooooo');
   //si el error es de tipo `Error` entonces lo reportamos a rollbar y lo logueamos
   if (e instanceof Error) {
     rollbar.error(e);
@@ -26,11 +26,13 @@ export const handlerErrors = (e: any, unhandledErr?: boolean): void => {
   //si el error de de sintaxis de tipado o desconocido reinicio el servidor y lo reporto a rollbar
   if (e instanceof SyntaxError || e instanceof TypeError || unhandledErr) {
     rollbar.critical(e);
+    logUnknownErr(e);
     process.exit(1);
   }
 
   //Si el error no es de sintaxis o tipado, ni desconocido, ni de tipo `Error`
   //entonces lo reporto a rollbar y lo logueo
+  rollbar.error(e);
   logUnknownErr(e);
 };
 

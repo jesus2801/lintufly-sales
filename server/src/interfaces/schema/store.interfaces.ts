@@ -21,16 +21,6 @@ export interface StoreData {
 }
 
 /**
- * Documento de la tienda o el local
- */
-export interface StoreDoc extends StoreData {
-  /**
-   * Id del documento de la tienda o local
-   */
-  _id: string;
-}
-
-/**
  * Input para crear una tienda o local
  */
 export interface StoreInput {

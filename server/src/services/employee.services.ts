@@ -68,8 +68,22 @@ class EmployeeServices {
     //si la contraseña no es correcta retorno credenciales inválidas
     if (!isValid) throw new ServiceError(errorCodes.invalidCredentials);
 
+    //si el usuario está desactivado retorno ese error
+    if (!user.state) throw new ServiceError(errorCodes.employeeInactive);
+
     //buscamos el nombre de la empresa
-    const business = await BusinessModel.findById(user.business).select('name');
+    const business = await BusinessModel.findById(user.business).select('name state');
+
+    //valido que la empresa exista
+    if (!business) {
+      //se reporta el error porque no es para nada correcto que esto halla pasado
+      eventEmmiter.emit('employee_dont_have_business', user);
+      //se devuelve el código de error correspondiente
+      throw new ServiceError(errorCodes.employeeDontHaveBusiness);
+    }
+
+    //si la empresa está inactiva, retorno ese error
+    if (!business.state) throw new ServiceError(errorCodes.businessInactive);
 
     //buscamos el nombre del local al que pertenece (si está en un local)
     let store: null | IStore = null;
@@ -82,7 +96,7 @@ class EmployeeServices {
       name: user.name,
       sub: user._id,
       businessId: user.business,
-      businessName: business!.name,
+      businessName: business.name,
       storeId: user.store,
       storeName: store ? store.name : undefined,
       avatar: user.avatar,
