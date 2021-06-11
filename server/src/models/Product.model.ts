@@ -6,7 +6,7 @@ import { Schema, model, Types } from 'mongoose';
  */
 const productSchema = new Schema({
   name: {
-    tpye: String,
+    type: String,
     required: true,
   },
   price: {

@@ -3,6 +3,8 @@ import { Schema, model, Document } from 'mongoose';
 
 import { IModel } from '@interfaces/schema';
 
+import { deleteBusinessRelations } from './helpers';
+
 /**
  * Interfaz del modelo de "Business"
  */
@@ -94,5 +96,8 @@ const businessSchema = new Schema({
 //TODO: arreglar este tipado
 //@ts-ignore
 businessSchema.plugin(mongoosePaginate);
+
+businessSchema.post('remove', deleteBusinessRelations);
+businessSchema.post('deleteOne', deleteBusinessRelations);
 
 export default model<IBusiness>('Business', businessSchema) as IModel<IBusiness>;

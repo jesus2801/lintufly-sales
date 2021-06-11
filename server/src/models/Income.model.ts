@@ -15,7 +15,7 @@ const incomeSchema = new Schema({
     required: true,
   },
   desc: {
-    Type: String,
+    type: String,
     required: true,
   },
   date: {
