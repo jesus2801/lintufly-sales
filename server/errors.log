@@ -101,3 +101,143 @@
     at App.<anonymous> (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\config\server.config.ts:87:13)
     at step (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\config\server.config.ts:33:23) 
  json: {"message":"connect ECONNREFUSED 127.0.0.1:27017","reason":{"type":"Single","setName":null,"maxSetVersion":null,"maxElectionId":null,"servers":{},"stale":false,"compatible":true,"compatibilityError":null,"logicalSessionTimeoutMinutes":null,"heartbeatFrequencyMS":10000,"localThresholdMS":15,"commonWireVersion":null}}
+2021-06-11T21:09:00.636Z [31merror[39m: [ERR] message: Unknown type "TokenPayload". 
+ Name: Error 
+ Stack: Error: Unknown type "TokenPayload".
+    at assertValidSDL (C:\Users\Jesus\Desktop\Lintufly-sales\server\node_modules\graphql\validation\validate.js:107:11)
+    at Object.buildASTSchema (C:\Users\Jesus\Desktop\Lintufly-sales\server\node_modules\graphql\utilities\buildASTSchema.js:45:34)
+    at buildSchemaFromTypeDefinitions (C:\Users\Jesus\Desktop\Lintufly-sales\server\dist\schema\src\buildSchemaFromTypeDefinitions.js:12:18)
+    at Object.makeExecutableSchema (C:\Users\Jesus\Desktop\Lintufly-sales\server\dist\schema\src\makeExecutableSchema.js:107:32)
+    at App.middlewares (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\config\server.config.ts:58:9)
+    at new App (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\config\server.config.ts:43:10)
+    at C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:30:17
+    at step (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:33:23)
+    at Object.next (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:14:53)
+    at C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:4:12)
+    at C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:28:2
+    at Object.<anonymous> (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:53:3)
+    at Module._compile (node:internal/modules/cjs/loader:1102:14)
+    at Module.m._compile (C:\Users\Jesus\Desktop\Lintufly-sales\server\node_modules\ts-node\src\index.ts:1295:23) 
+ json: {}
+2021-06-11T21:40:25.738Z [31merror[39m: [ERR] message: Must provide typeDefs 
+ Name: Error 
+ Stack: Error: Must provide typeDefs
+    at Object.makeExecutableSchema (C:\Users\Jesus\Desktop\Lintufly-sales\server\dist\schema\src\makeExecutableSchema.js:59:15)
+    at App.middlewares (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\config\server.config.ts:59:9)
+    at new App (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\config\server.config.ts:44:10)
+    at C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:30:17
+    at step (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:33:23)
+    at Object.next (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:14:53)
+    at C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:4:12)
+    at C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:28:2
+    at Object.<anonymous> (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:53:3)
+    at Module._compile (node:internal/modules/cjs/loader:1102:14)
+    at Module.m._compile (C:\Users\Jesus\Desktop\Lintufly-sales\server\node_modules\ts-node\src\index.ts:1295:23)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1131:10)
+    at Object.require.extensions.<computed> [as .ts] (C:\Users\Jesus\Desktop\Lintufly-sales\server\node_modules\ts-node\src\index.ts:1298:12)
+    at Module.load (node:internal/modules/cjs/loader:967:32) 
+ json: {}
+2021-06-11T21:42:34.626Z [31merror[39m: [ERR] message: Must provide typeDefs 
+ Name: Error 
+ Stack: Error: Must provide typeDefs
+    at Object.makeExecutableSchema (C:\Users\Jesus\Desktop\Lintufly-sales\server\dist\schema\src\makeExecutableSchema.js:59:15)
+    at App.middlewares (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\config\server.config.ts:59:9)
+    at new App (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\config\server.config.ts:44:10)
+    at C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:30:17
+    at step (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:33:23)
+    at Object.next (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:14:53)
+    at C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:4:12)
+    at C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:28:2
+    at Object.<anonymous> (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:53:3)
+    at Module._compile (node:internal/modules/cjs/loader:1102:14)
+    at Module.m._compile (C:\Users\Jesus\Desktop\Lintufly-sales\server\node_modules\ts-node\src\index.ts:1295:23)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1131:10)
+    at Object.require.extensions.<computed> [as .ts] (C:\Users\Jesus\Desktop\Lintufly-sales\server\node_modules\ts-node\src\index.ts:1298:12)
+    at Module.load (node:internal/modules/cjs/loader:967:32) 
+ json: {}
+2021-06-11T21:43:40.415Z [31merror[39m: [ERR] message: Must provide typeDefs 
+ Name: Error 
+ Stack: Error: Must provide typeDefs
+    at Object.makeExecutableSchema (C:\Users\Jesus\Desktop\Lintufly-sales\server\dist\schema\src\makeExecutableSchema.js:59:15)
+    at App.middlewares (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\config\server.config.ts:58:9)
+    at new App (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\config\server.config.ts:43:10)
+    at C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:30:17
+    at step (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:33:23)
+    at Object.next (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:14:53)
+    at C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:4:12)
+    at C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:28:2
+    at Object.<anonymous> (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:53:3)
+    at Module._compile (node:internal/modules/cjs/loader:1102:14)
+    at Module.m._compile (C:\Users\Jesus\Desktop\Lintufly-sales\server\node_modules\ts-node\src\index.ts:1295:23)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1131:10)
+    at Object.require.extensions.<computed> [as .ts] (C:\Users\Jesus\Desktop\Lintufly-sales\server\node_modules\ts-node\src\index.ts:1298:12)
+    at Module.load (node:internal/modules/cjs/loader:967:32) 
+ json: {}
+2021-06-11T21:44:03.592Z [31merror[39m: [ERR] message: Must provide typeDefs 
+ Name: Error 
+ Stack: Error: Must provide typeDefs
+    at Object.makeExecutableSchema (C:\Users\Jesus\Desktop\Lintufly-sales\server\dist\schema\src\makeExecutableSchema.js:59:15)
+    at App.middlewares (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\config\server.config.ts:58:9)
+    at new App (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\config\server.config.ts:43:10)
+    at C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:30:17
+    at step (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:33:23)
+    at Object.next (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:14:53)
+    at C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:4:12)
+    at C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:28:2
+    at Object.<anonymous> (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:53:3)
+    at Module._compile (node:internal/modules/cjs/loader:1102:14)
+    at Module.m._compile (C:\Users\Jesus\Desktop\Lintufly-sales\server\node_modules\ts-node\src\index.ts:1295:23)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1131:10)
+    at Object.require.extensions.<computed> [as .ts] (C:\Users\Jesus\Desktop\Lintufly-sales\server\node_modules\ts-node\src\index.ts:1298:12)
+    at Module.load (node:internal/modules/cjs/loader:967:32) 
+ json: {}
+2021-06-11T21:45:41.969Z [31merror[39m: [ERR] message: "Query" defined in resolvers, but not in schema 
+ Name: Error 
+ Stack: Error: "Query" defined in resolvers, but not in schema
+    at C:\Users\Jesus\Desktop\Lintufly-sales\server\dist\schema\src\addResolversToSchema.js:35:23
+    at Array.forEach (<anonymous>)
+    at addResolversToSchema (C:\Users\Jesus\Desktop\Lintufly-sales\server\dist\schema\src\addResolversToSchema.js:18:28)
+    at schemaTransforms (C:\Users\Jesus\Desktop\Lintufly-sales\server\dist\schema\src\makeExecutableSchema.js:66:41)
+    at C:\Users\Jesus\Desktop\Lintufly-sales\server\dist\schema\src\makeExecutableSchema.js:108:65
+    at Array.reduce (<anonymous>)
+    at Object.makeExecutableSchema (C:\Users\Jesus\Desktop\Lintufly-sales\server\dist\schema\src\makeExecutableSchema.js:108:29)
+    at App.middlewares (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\config\server.config.ts:58:9)
+    at new App (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\config\server.config.ts:43:10)
+    at C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:30:17
+    at step (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:33:23)
+    at Object.next (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:14:53)
+    at C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:4:12)
+    at C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:28:2 
+ json: {}
+2021-06-11T21:46:11.120Z [31merror[39m: [ERR] message: Query.allBusiness defined in resolvers, but not in schema 
+ Name: Error 
+ Stack: Error: Query.allBusiness defined in resolvers, but not in schema
+    at C:\Users\Jesus\Desktop\Lintufly-sales\server\dist\schema\src\addResolversToSchema.js:74:35
+    at Array.forEach (<anonymous>)
+    at C:\Users\Jesus\Desktop\Lintufly-sales\server\dist\schema\src\addResolversToSchema.js:69:44
+    at Array.forEach (<anonymous>)
+    at addResolversToSchema (C:\Users\Jesus\Desktop\Lintufly-sales\server\dist\schema\src\addResolversToSchema.js:18:28)
+    at schemaTransforms (C:\Users\Jesus\Desktop\Lintufly-sales\server\dist\schema\src\makeExecutableSchema.js:66:41)
+    at C:\Users\Jesus\Desktop\Lintufly-sales\server\dist\schema\src\makeExecutableSchema.js:108:65
+    at Array.reduce (<anonymous>)
+    at Object.makeExecutableSchema (C:\Users\Jesus\Desktop\Lintufly-sales\server\dist\schema\src\makeExecutableSchema.js:108:29)
+    at App.middlewares (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\config\server.config.ts:58:9)
+    at new App (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\config\server.config.ts:43:10)
+    at C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:30:17
+    at step (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:33:23)
+    at Object.next (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:14:53)
+    at C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:8:71
+    at new Promise (<anonymous>) 
+ json: {}

@@ -21,7 +21,8 @@
       "@graphql/*": ["graphql/*"],
       "@services/*": ["services/*"],
       "@utils/*": ["utils/*"],
-      "@events/*": ["events/*"]
+      "@events/*": ["events/*"],
+      "@schema/*": ["schema/*"],
     }
   },
   "exclude": ["node_modules", "__test__", "docs", "dist"],

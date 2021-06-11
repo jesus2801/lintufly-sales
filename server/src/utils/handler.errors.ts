@@ -11,7 +11,6 @@ const logUnknownErr = (e: any) => {
 };
 
 export const handlerErrors = (e: any, unhandledErr?: boolean): void => {
-  console.log('entrandooooo');
   //si el error es de tipo `Error` entonces lo reportamos a rollbar y lo logueamos
   if (e instanceof Error) {
     rollbar.error(e);
