@@ -38,6 +38,15 @@ export const switchErrorCode = (errCode: string): string => {
     case errorCodes.nonExistentBusiness:
       return 'La empresa que ha tratado de buscar no existe o no se encuentra disponible';
 
+    case errorCodes.businessInactive:
+      return 'Lo sentimos, la empresa a la que se intenta acceder está inactiva, esto puede ser porque se acaba de registrar y no nos hemos contactado, o por alguna conducta que viole nuestras normativas';
+
+    case errorCodes.employeeInactive:
+      return 'El empleado con el que intenta acceder se encuentra en estado desactivado, esto puede ser porque los administradores de su empresa así lo decidieron o por alguna conducta que viole nuestras normativas';
+
+    case errorCodes.employeeDontHaveBusiness:
+      return 'Lo sentimos, el empleado con el que intenta acceder parece no estar anexado a ninguna empresa, este error ya ha sido reportado a nosotros, pronto nos comunicaremos con tu empresa';
+
     default:
       return 'Lo sentimos, ha ocurrido un error inesperado, por favor, intenta más tarde';
   }

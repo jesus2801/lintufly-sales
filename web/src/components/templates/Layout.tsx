@@ -23,22 +23,11 @@ const Layout = ({ children, title }: LayoutProps) => {
         <meta name="title" content={title} />
 
         <link rel="canonical" href={actualUrl} />
-        <link
-          rel="shortcut icon"
-          href="/favicon.ico"
-          type="image/x-icon"
-        />
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
 
         <meta http-equiv="Content-Language" content="es" />
-        <meta
-          httpEquiv="content-type"
-          content="text/html"
-          charSet="UTF-8"
-        />
-        <meta
-          httpEquiv="cache-control"
-          content="public, max-age=3024000"
-        />
+        <meta httpEquiv="content-type" content="text/html" charSet="UTF-8" />
+        <meta httpEquiv="cache-control" content="public, max-age=3024000" />
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1"
@@ -71,6 +60,7 @@ const Layout = ({ children, title }: LayoutProps) => {
           rel="stylesheet"
         />
       </Helmet>
+
       {children}
     </>
   );

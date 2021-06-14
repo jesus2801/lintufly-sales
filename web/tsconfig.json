@@ -27,6 +27,7 @@
       "@functions/*": ["src/functions/*"],
       "@config/*": ["src/config/*"],
       "@graphql/*": ["src/graphql/*"],
+      "@pages/*": ["src/pages/*"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

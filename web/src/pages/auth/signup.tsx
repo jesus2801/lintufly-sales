@@ -1,10 +1,11 @@
+import Layout from '@templates/Layout';
 import React from 'react';
 
 const signup = () => {
   return (
-    <div>
+    <Layout title="Signup">
       <h1>Hello world in signup</h1>
-    </div>
+    </Layout>
   );
 };
 

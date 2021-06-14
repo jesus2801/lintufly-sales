@@ -1,9 +1,9 @@
 import React from 'react';
 
-import BusinessSection from '@organisms/login/business-section/BusinessSection';
-import PhotosSection from '@organisms/login/photos-section/PhotosSection';
-import SubmitSection from '@organisms/login/submit-section/SubmitSection';
-import AdminSection from '@organisms/login/admin-section/AdminSection';
+import BusinessSection from '@organisms/register/business-section/BusinessSection';
+import PhotosSection from '@organisms/register/photos-section/PhotosSection';
+import SubmitSection from '@organisms/register/submit-section/SubmitSection';
+import AdminSection from '@organisms/register/admin-section/AdminSection';
 
 import Layout from '@templates/Layout';
 

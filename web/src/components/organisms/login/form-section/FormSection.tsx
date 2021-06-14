@@ -1,17 +1,22 @@
 import React, { ChangeEvent, useEffect, useState } from 'react';
+import { useMutation } from '@apollo/client';
 import isEmail from 'validator/lib/isEmail';
 import Link from 'next/link';
+
+import { handleLoading, showErr } from '@functions/alerts.functions';
+import { handlerRequestErr } from '@functions/validate.functions';
 
 import FormGroup from '@atoms/form-group/FormGroup';
 import Button from '@atoms/button/Button';
 import Input from '@atoms/input/Input';
 import Svg from '@atoms/Svg';
 
+import { LOGIN_QUERY } from '@graphql/mutations';
+
 import { FormDiv, FormSectionDiv, LinksDiv } from './FormSection.styles';
-import { handleLoading, showErr } from '@functions/alerts.functions';
-import { useLazyQuery } from '@apollo/client';
-import { LOGIN_QUERY } from '@graphql/queries';
-import { handlerRequestErr } from '@functions/validate.functions';
+import { useRouter } from 'next/router';
+import { setUserPayload } from '@context/actions/employee.actions';
+import { useDispatch } from 'react-redux';
 
 const FormSection = () => {
   //state que contiene los datos de logueo
@@ -24,7 +29,12 @@ const FormSection = () => {
   const { mail, pass } = loginData;
 
   //query para el logueo
-  const [login, { loading, data, error }] = useLazyQuery(LOGIN_QUERY);
+  const [login] = useMutation(LOGIN_QUERY);
+
+  //router para redireccionar en caso de éxito
+  const router = useRouter();
+  //dispatch para disparar actions
+  const dispatch = useDispatch();
 
   //handler del evento change para los inputs
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -54,32 +64,28 @@ const FormSection = () => {
       return;
     }
 
-    //ejecutamos la consulta
-    login({
-      variables: {
-        input: {
-          mail,
-          pass,
+    try {
+      handleLoading(true, 'Verificando datos');
+
+      //ejecutamos la consulta
+      const response = await login({
+        variables: {
+          input: {
+            mail,
+            pass,
+          },
         },
-      },
-    });
+      });
+
+      handleLoading(false);
+
+      localStorage.setItem('token', response.data.loginEmployee.token);
+      dispatch(setUserPayload(response.data.loginEmployee.payload));
+      router.push('/app');
+    } catch (e) {
+      handlerRequestErr(e);
+    }
   };
-
-  //use effect para si está cargando la consulta, se muestre un loader
-  useEffect(() => {
-    if (loading) handleLoading(true, 'Verificando datos');
-    else handleLoading(false);
-  }, [loading]);
-
-  //use effect para cuando los datos han sido entregados setear token y redireccionar
-  useEffect(() => {
-    if (data) console.log(data);
-  }, [data]);
-
-  //use effect por si hay algún error, mostrarlo
-  useEffect(() => {
-    if (error) handlerRequestErr(error);
-  }, [error]);
 
   return (
     <FormSectionDiv>

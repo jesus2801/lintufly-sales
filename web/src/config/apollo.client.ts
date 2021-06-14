@@ -1,9 +1,21 @@
-import { ApolloClient, HttpLink, InMemoryCache } from '@apollo/client';
+import { ApolloClient, createHttpLink, InMemoryCache } from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
+
+const httpLink = createHttpLink({
+  uri: process.env.SERVER_URI!,
+});
+
+const authLink = setContext(() => {
+  // return the headers to the context so httpLink can read them
+  return {
+    headers: {
+      'x-auth-token': localStorage.getItem('token') || '',
+    },
+  };
+});
 
 const client = new ApolloClient({
-  link: new HttpLink({
-    uri: process.env.SERVER_URI!,
-  }),
+  link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 });
 

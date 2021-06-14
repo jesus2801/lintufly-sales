@@ -9,3 +9,21 @@ export const CREATE_BUSINESS = gql`
     createBusiness(business: $businessInput, admin: $adminInput, recaptcha: $recaptcha)
   }
 `;
+
+export const LOGIN_QUERY = gql`
+  mutation Login($input: LoginInput!) {
+    loginEmployee(input: $input) {
+      token
+      payload {
+        role
+        sub
+        mail
+        businessId
+        businessName
+        storeId
+        storeName
+        avatar
+      }
+    }
+  }
+`;
