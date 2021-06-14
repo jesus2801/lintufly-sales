@@ -1,10 +1,10 @@
-import AppLayout from '@templates/AppLayout';
+import SideBar from '@organisms/side-bar/SideBar';
+import AppLayout from '@templates/app-layout/AppLayout';
 
 const IndexPage = () => {
   return (
     <AppLayout title="Home">
-      <h1>Hello World in App</h1>
-      <h2>añlsdkffj</h2>
+      
     </AppLayout>
   );
 };

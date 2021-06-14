@@ -4,7 +4,7 @@ import FormGroup from '@atoms/form-group/FormGroup';
 import Input from '@atoms/input/Input';
 import Svg from '@atoms/Svg';
 
-import FormDiv from '@molecules/FormDiv';
+import FormDiv from '@molecules/form-div/FormDiv';
 
 import { AdminSectionDiv, FormSection } from './AdminSection.styles';
 import Title from '@atoms/title/Title';

@@ -25,7 +25,7 @@ import {
 
 import { BusinessSectionDiv, FormContainer } from './BusinessSections.styles';
 import 'react-intl-tel-input/dist/main.css';
-import FormDiv from 'src/components/molecules/FormDiv';
+import FormDiv from '@molecules/form-div/FormDiv';
 
 const BusinessSection = () => {
   //referencia del primer input con el fin de hacerle focus cuando cargue la página
