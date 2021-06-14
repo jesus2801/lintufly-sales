@@ -6,7 +6,7 @@ import employeeServices from '@services/employee.services';
 export default {
   Query: {
     async viewer({}, {}, ctx: GraphqlCtx) {
-      return ctx.reply.user;
+      return ctx.user;
     },
   },
 

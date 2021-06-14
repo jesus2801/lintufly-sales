@@ -89,10 +89,6 @@ export type UserPayload =
       avatar: string;
     };
 
-interface GraphqlReply extends FastifyReply {
-  user: UserPayload | null;
-}
-
 export interface GraphqlCtx extends MercuriusContext {
-  reply: GraphqlReply;
+  user: UserPayload | null;
 }
