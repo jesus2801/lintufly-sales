@@ -22,6 +22,9 @@ export const preferredCountries = [
   've',
 ];
 
+//Formatos de imagen aceptados
+export const acceptedFormats = ['image/png', 'image/jpeg', 'image/jpg', 'image/webp'];
+
 export const navWidth = '300px';
 
 const baseUrl = '/static/nav/';
@@ -72,12 +75,12 @@ export const navItems = [
       {
         name: 'Lista de Productos',
         img: `${baseUrl}shopping-cart.webp`,
-        link: '/products/',
+        link: 'products/',
       },
       {
         name: 'Agregar Producto',
         img: `${baseUrl}notebook.webp`,
-        link: '/products/create-product',
+        link: 'products/create-product',
       },
     ],
   },

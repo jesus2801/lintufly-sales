@@ -9,5 +9,6 @@ export const ChildrenDiv = styled.div`
   width: calc(100% - ${navWidth});
   padding: 20px;
 
-  overflow-y: auto;
+  height: calc(100vh - 80px);
+  overflow-y: scroll;
 `;

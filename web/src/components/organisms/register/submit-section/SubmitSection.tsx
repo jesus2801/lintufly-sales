@@ -27,6 +27,7 @@ import {
   setPass,
   setPhone,
 } from '@context/actions/register.actions';
+import { isEmpty } from '@functions/validate.functions';
 
 const SubmitSection = () => {
   //extraemos los valores del state
@@ -51,14 +52,7 @@ const SubmitSection = () => {
   //handler del evento click del botón principal
   const handleClick = async () => {
     //validamos que los campos no estén vacios
-    if (
-      businessMail === '' ||
-      businessName === '' ||
-      currency === '' ||
-      mail === '' ||
-      name === '' ||
-      pass === ''
-    ) {
+    if (isEmpty(businessMail, businessName, currency, mail, pass, name)) {
       showErr('Por favor, rellena correctamente todos los campos');
       return;
     }
@@ -154,9 +148,7 @@ const SubmitSection = () => {
           router.push('/');
         },
       );
-    } catch (e) {
-      
-    }
+    } catch (e) {}
   };
 
   return (

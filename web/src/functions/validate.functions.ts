@@ -1,4 +1,7 @@
+import Router from 'next/router';
+
 import errorCodes from '@utils/error.codes';
+
 import { showErr } from './alerts.functions';
 
 const tryAgain = ', por favor, intente de nuevo o más tarde';
@@ -47,6 +50,9 @@ export const switchErrorCode = (errCode: string): string => {
     case errorCodes.employeeDontHaveBusiness:
       return 'Lo sentimos, el empleado con el que intenta acceder parece no estar anexado a ninguna empresa, este error ya ha sido reportado a nosotros, pronto nos comunicaremos con tu empresa';
 
+    case 'Forbidden':
+      return 'No tienes credenciales o se han agotado, por favor, logueate para continuar';
+
     default:
       return 'Lo sentimos, ha ocurrido un error inesperado, por favor, intenta más tarde';
   }
@@ -79,3 +85,5 @@ export const handlerRequestErr = (e: any) => {
   //si el error es desconocido, mostramos este mensaje
   showErr('Lo sentimos, ha ocurrido un error inesperado, por favor intenta más tarde');
 };
+
+export const isEmpty = (...strs: string[]) => strs.some((str) => str.trim() === '');

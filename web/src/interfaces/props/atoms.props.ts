@@ -42,6 +42,14 @@ export interface ButtonProps
     React.ButtonHTMLAttributes<HTMLButtonElement>,
     HTMLButtonElement
   > {
-  buttonType: 'submit';
+  buttonType: 'submit' | 'small';
   children: ReactNode;
+}
+
+export interface TextAreaProps
+  extends DetailedHTMLProps<
+    React.TextareaHTMLAttributes<HTMLTextAreaElement>,
+    HTMLTextAreaElement
+  > {
+  children?: ReactNode;
 }

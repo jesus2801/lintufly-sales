@@ -12,3 +12,15 @@ export const SubmitButton = styled.button`
 
   cursor: pointer;
 `;
+
+export const SmallButton = styled.button`
+  background-color: var(--blue);
+  border: none;
+  border-radius: 100px;
+
+  color: #fff;
+  padding: 5px 15px;
+  font-size: 15px;
+
+  cursor: pointer;
+`;

@@ -12,9 +12,7 @@ import Title from '@atoms/title/Title';
 import Svg from '@atoms/Svg';
 
 import { DescriptionText, PhotosCtn, PhotosSectionDiv } from './PhotosSection.styles';
-
-//Formatos de imagen aceptados
-const acceptedFormats = ['image/png', 'image/jpeg', 'image/jpg', 'image/webp'];
+import { acceptedFormats } from '@utils/variables';
 
 const PhotosSection = () => {
   const { images } = useSelector((state: AppCtx) => state.register);
