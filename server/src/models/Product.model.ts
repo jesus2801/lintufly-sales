@@ -1,4 +1,35 @@
-import { Schema, model, Types } from 'mongoose';
+import { IModel } from '@interfaces/schema';
+import { Schema, model, Types, Document } from 'mongoose';
+
+/**
+ * Interfaz del modelo de Product
+ */
+export interface IProduct extends Document {
+  /**
+   * Nombre del producto
+   */
+  name: string;
+  /**
+   * Precio del producto
+   */
+  price: number;
+  /**
+   * Id de la empresa a la que pertenece el producto
+   */
+  business: string;
+  /**
+   * Imagenes del producto
+   */
+  imgs: string[];
+  /**
+   * Descripción del producto
+   */
+  desc?: string;
+  /**
+   * Comentarios del producto
+   */
+  comments: string[];
+}
 
 /**
  * Schema de los productos de las empresas
@@ -25,7 +56,7 @@ const productSchema = new Schema({
   },
   desc: {
     type: String,
-    required: true,
+    required: false,
   },
   comments: {
     type: [String],
@@ -34,4 +65,4 @@ const productSchema = new Schema({
   },
 });
 
-export default model('Product', productSchema);
+export default model<IProduct>('Product', productSchema) as IModel<IProduct>;

@@ -34,6 +34,8 @@ export default shield(
       createEmployee: allow,
       createStore: isAdmin,
       loginEmployee: allow,
+      //products
+      createProduct: isAdmin,
     },
   },
   {
