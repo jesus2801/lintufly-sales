@@ -4,14 +4,12 @@ import 'firebase/storage';
 import { firebaseConfig } from './firebase.config';
 
 class Firebase {
-  public ref: app.storage.Reference;
+  public storage: app.storage.Storage;
 
   constructor() {
-    if (app.apps.length === 0) {
-      app.initializeApp(firebaseConfig);
-    }
+    if (app.apps.length === 0) app.initializeApp(firebaseConfig);
 
-    this.ref = app.storage().ref();
+    this.storage = app.storage();
   }
 }
 

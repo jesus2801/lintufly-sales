@@ -1,69 +1,99 @@
 import React, { ChangeEvent, useEffect, useRef, useState } from 'react';
 import isNumber from 'validator/lib/isNumeric';
+import { useMutation } from '@apollo/client';
 import { v4 } from 'uuid';
 
+import { handlerRequestErr, isEmpty } from '@functions/validate.functions';
 import AppLayout from '@templates/app-layout/AppLayout';
 
-import { showErr } from '@functions/alerts.functions';
+import { handleLoading, showErr, success } from '@functions/alerts.functions';
+
+import firebaseInstance from '@config/firebase.instance';
 
 import FormGroup from '@atoms/form-group/FormGroup';
 import TextArea from '@atoms/text-area/TextArea';
 import Button from '@atoms/button/Button';
 import Input from '@atoms/input/Input';
 
+import { CREATE_PRODUCT } from '@graphql/mutations';
+
 import { acceptedFormats } from '@utils/variables';
 
 import FormDiv from '@molecules/form-div/FormDiv';
-import { handlerRequestErr, isEmpty } from '@functions/validate.functions';
-import firebaseInstance from '@config/firebase.instance';
 
 const CreateProduct = () => {
+  //referencia del primer input con el fin de hacerle focus
   const firstInputRef = useRef(null as null | HTMLInputElement);
+  //referencia del input que contiene la imagen del producto
   const inputFileRef = useRef(null as null | HTMLInputElement);
+  //referencia de la etiqueta img en donde se muestra la imagen del producto
   const imageRef = useRef(null as null | HTMLImageElement);
 
-  const [data, setData] = useState({
+  //mutacion para crear el producto
+  const [createProduct] = useMutation(CREATE_PRODUCT);
+
+  //state inicial de la información del producto
+  const initState = {
     name: '',
     price: '',
     desc: '',
-  });
+  };
+  const [data, setData] = useState(initState);
+  //state que contiene la imagen del producto
   const [file, setFile] = useState(null as null | File);
 
+  // propiedades de la información del producto
   const { name, desc, price } = data;
 
+  //use effect para hacerle focus al primer input
   useEffect(() => {
     if (firstInputRef.current) firstInputRef.current.focus({ preventScroll: true });
   }, [firstInputRef]);
 
+  //handlear cuando se le hace click al boton de insertar imagen
   const handleFileClick = () => {
     if (inputFileRef.current) inputFileRef.current.click();
   };
 
+  //handlear cuando se ingresa un archivo
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
     const file: File = e.currentTarget.files![0];
 
+    //validamso que sea una imagen válida
     if (acceptedFormats.indexOf(file.type) === -1) {
       setFile(null);
-      imageRef.current!.src = '';
       showErr('Por favor, ingresa un archivo con formato permitido');
       return;
     }
 
+    //válidamos que no se pase de los 5MB
     if (file.size > 5000000) {
       setFile(null);
-      imageRef.current!.src = '';
       showErr('Por favor, ingresa un archivo menor a 5MB');
       return;
     }
 
-    const blob = new Blob([file]);
-    const URL = window.URL || window.webkitURL;
-    imageRef.current!.style.width = '100%';
-    imageRef.current!.style.marginTop = '20px';
-    imageRef.current!.src = URL.createObjectURL(blob);
+    //seteamos el archivo en el state
     setFile(file);
   };
 
+  //cuando el archivo cambie, lo mostramos u ocultamos según corresponda
+  useEffect(() => {
+    if (imageRef.current) {
+      if (file) {
+        const blob = new Blob([file]);
+        const URL = window.URL || window.webkitURL;
+        imageRef.current.style.width = '100%';
+        imageRef.current.style.marginTop = '20px';
+        imageRef.current.src = URL.createObjectURL(blob);
+      } else {
+        imageRef.current.src = '';
+        imageRef.current.style.marginTop = '0';
+      }
+    }
+  }, [file]);
+
+  //handle change de los inputs
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setData({
       ...data,
@@ -71,34 +101,60 @@ const CreateProduct = () => {
     });
   };
 
+  //handle submit del boton de crear producto
   const handleSubmit = async () => {
+    //validamos que no hallan campos vacios
     if (isEmpty(name, price)) {
       showErr('Por favor, el nombre y el precio son campos requeridos');
       return;
     }
 
+    //validamos que el precio sea formato numérico
     if (!isNumber(price)) {
       showErr('Por favor, ingrese un precio válido');
       return;
     }
 
+    //validamos que el precio no sea menor o igual a 0
     if (parseFloat(price) <= 0) {
       showErr('Por favor ingrese un precio válido');
       return;
     }
 
     try {
+      //si hay imagen, la subimos a firebase
       let imgName: null | string = null;
       if (file) {
-        const uploadTask = await firebaseInstance.ref
-          .child(`products-images/${v4}`)
+        handleLoading(true, 'Subiendo Foto');
+        const uploadTask = await firebaseInstance.storage
+          .ref()
+          .child(`products-images/${v4()}${file.name}`)
           .put(file, {
             contentType: file.type,
           });
+        handleLoading(false);
+
         imgName = uploadTask.metadata.fullPath;
       }
 
-      
+      //creamos el producto
+      handleLoading(true, 'Creando Producto');
+      await createProduct({
+        variables: {
+          input: {
+            name,
+            price: parseFloat(price),
+            imgs: imgName ? [imgName] : [],
+            desc: desc.trim() === '' ? undefined : desc,
+          },
+        },
+      });
+      handleLoading(false);
+
+      //si todo sale bien muestro una alerta y limpio el state
+      success('El producto ha sido creado exitosamente');
+      setData(initState);
+      setFile(null);
     } catch (e) {
       handlerRequestErr(e);
     }

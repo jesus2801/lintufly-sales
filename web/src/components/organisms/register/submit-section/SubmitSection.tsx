@@ -99,8 +99,9 @@ const SubmitSection = () => {
       //subimos las fotos a firebase
       const imagesPaths = [];
       for (let i = 0, n = images.length; i < n; i++) {
-        const uploadTask = await firebaseInstance.ref
-          .child(`business-images/${v4()}`)
+        const uploadTask = await firebaseInstance.storage
+          .ref()
+          .child(`business-images/${v4()}${images[i].name}`)
           .put(images[i], {
             contentType: images[i].type,
           });

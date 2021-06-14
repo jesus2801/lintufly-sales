@@ -27,3 +27,9 @@ export const LOGIN_QUERY = gql`
     }
   }
 `;
+
+export const CREATE_PRODUCT = gql`
+  mutation CreateProduct($input: ProductInput!) {
+    createProduct(input: $input)
+  }
+`;
