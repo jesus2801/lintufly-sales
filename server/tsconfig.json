@@ -22,7 +22,7 @@
       "@services/*": ["services/*"],
       "@utils/*": ["utils/*"],
       "@events/*": ["events/*"],
-      "@schema/*": ["schema/*"],
+      "@schema/*": ["schema/*"]
     }
   },
   "exclude": ["node_modules", "__test__", "docs", "dist"],

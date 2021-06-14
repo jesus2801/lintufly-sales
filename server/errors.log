@@ -241,3 +241,163 @@
     at C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:8:71
     at new Promise (<anonymous>) 
  json: {}
+2021-06-11T22:19:06.189Z [31merror[39m: [ERR] message: Query.viewer defined in resolvers, but not in schema 
+ Name: Error 
+ Stack: Error: Query.viewer defined in resolvers, but not in schema
+    at C:\Users\Jesus\Desktop\Lintufly-sales\server\dist\schema\src\addResolversToSchema.js:74:35
+    at Array.forEach (<anonymous>)
+    at C:\Users\Jesus\Desktop\Lintufly-sales\server\dist\schema\src\addResolversToSchema.js:69:44
+    at Array.forEach (<anonymous>)
+    at addResolversToSchema (C:\Users\Jesus\Desktop\Lintufly-sales\server\dist\schema\src\addResolversToSchema.js:18:28)
+    at schemaTransforms (C:\Users\Jesus\Desktop\Lintufly-sales\server\dist\schema\src\makeExecutableSchema.js:66:41)
+    at C:\Users\Jesus\Desktop\Lintufly-sales\server\dist\schema\src\makeExecutableSchema.js:108:65
+    at Array.reduce (<anonymous>)
+    at Object.makeExecutableSchema (C:\Users\Jesus\Desktop\Lintufly-sales\server\dist\schema\src\makeExecutableSchema.js:108:29)
+    at App.middlewares (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\config\server.config.ts:58:9)
+    at new App (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\config\server.config.ts:43:10)
+    at C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:30:17
+    at step (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:33:23)
+    at Object.next (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:14:53)
+    at C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:8:71
+    at new Promise (<anonymous>) 
+ json: {}
+2021-06-11T22:20:25.511Z [31merror[39m: [ERR] message: Unknown type "TokenPayload". 
+ Name: Error 
+ Stack: Error: Unknown type "TokenPayload".
+    at assertValidSDL (C:\Users\Jesus\Desktop\Lintufly-sales\server\node_modules\graphql\validation\validate.js:107:11)
+    at Object.buildASTSchema (C:\Users\Jesus\Desktop\Lintufly-sales\server\node_modules\graphql\utilities\buildASTSchema.js:45:34)
+    at buildSchemaFromTypeDefinitions (C:\Users\Jesus\Desktop\Lintufly-sales\server\dist\schema\src\buildSchemaFromTypeDefinitions.js:12:18)
+    at Object.makeExecutableSchema (C:\Users\Jesus\Desktop\Lintufly-sales\server\dist\schema\src\makeExecutableSchema.js:107:32)
+    at App.middlewares (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\config\server.config.ts:58:9)
+    at new App (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\config\server.config.ts:43:10)
+    at C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:30:17
+    at step (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:33:23)
+    at Object.next (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:14:53)
+    at C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:4:12)
+    at C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:28:2
+    at Object.<anonymous> (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:53:3)
+    at Module._compile (node:internal/modules/cjs/loader:1102:14)
+    at Module.m._compile (C:\Users\Jesus\Desktop\Lintufly-sales\server\node_modules\ts-node\src\index.ts:1295:23) 
+ json: {}
+2021-06-12T14:09:52.732Z [31merror[39m: [ERR] message: Unknown type "TokenPayload". 
+ Name: Error 
+ Stack: Error: Unknown type "TokenPayload".
+    at assertValidSDL (C:\Users\Jesus\Desktop\Lintufly-sales\server\node_modules\graphql\validation\validate.js:107:11)
+    at Object.buildASTSchema (C:\Users\Jesus\Desktop\Lintufly-sales\server\node_modules\graphql\utilities\buildASTSchema.js:45:34)
+    at buildSchemaFromTypeDefinitions (C:\Users\Jesus\Desktop\Lintufly-sales\server\dist\schema\src\buildSchemaFromTypeDefinitions.js:12:18)
+    at Object.makeExecutableSchema (C:\Users\Jesus\Desktop\Lintufly-sales\server\dist\schema\src\makeExecutableSchema.js:107:32)
+    at App.middlewares (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\config\server.config.ts:58:9)
+    at new App (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\config\server.config.ts:43:10)
+    at C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:37:17
+    at step (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:33:23)
+    at Object.next (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:14:53)
+    at C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:4:12)
+    at C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:35:2
+    at Object.<anonymous> (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:60:3)
+    at Module._compile (node:internal/modules/cjs/loader:1102:14)
+    at Module.m._compile (C:\Users\Jesus\Desktop\Lintufly-sales\server\node_modules\ts-node\src\index.ts:1295:23) 
+ json: {}
+2021-06-12T14:12:04.591Z [31merror[39m: [ERR] message: Unknown type "TokenPayload". 
+ Name: Error 
+ Stack: Error: Unknown type "TokenPayload".
+    at assertValidSDL (C:\Users\Jesus\Desktop\Lintufly-sales\server\node_modules\graphql\validation\validate.js:107:11)
+    at Object.buildASTSchema (C:\Users\Jesus\Desktop\Lintufly-sales\server\node_modules\graphql\utilities\buildASTSchema.js:45:34)
+    at buildSchemaFromTypeDefinitions (C:\Users\Jesus\Desktop\Lintufly-sales\server\dist\schema\src\buildSchemaFromTypeDefinitions.js:12:18)
+    at Object.makeExecutableSchema (C:\Users\Jesus\Desktop\Lintufly-sales\server\dist\schema\src\makeExecutableSchema.js:107:32)
+    at App.middlewares (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\config\server.config.ts:58:9)
+    at new App (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\config\server.config.ts:43:10)
+    at C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:37:17
+    at step (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:33:23)
+    at Object.next (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:14:53)
+    at C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:4:12)
+    at C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:35:2
+    at Object.<anonymous> (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:60:3)
+    at Module._compile (node:internal/modules/cjs/loader:1102:14)
+    at Module.m._compile (C:\Users\Jesus\Desktop\Lintufly-sales\server\node_modules\ts-node\src\index.ts:1295:23) 
+ json: {}
+2021-06-14T15:26:30.502Z [31merror[39m: [ERR] message: Unknown type "TokenPayload". 
+ Name: Error 
+ Stack: Error: Unknown type "TokenPayload".
+    at assertValidSDL (C:\Users\Jesus\Desktop\Lintufly-sales\server\node_modules\graphql\validation\validate.js:107:11)
+    at Object.buildASTSchema (C:\Users\Jesus\Desktop\Lintufly-sales\server\node_modules\graphql\utilities\buildASTSchema.js:45:34)
+    at buildSchemaFromTypeDefinitions (C:\Users\Jesus\Desktop\Lintufly-sales\server\dist\schema\src\buildSchemaFromTypeDefinitions.js:12:18)
+    at Object.makeExecutableSchema (C:\Users\Jesus\Desktop\Lintufly-sales\server\dist\schema\src\makeExecutableSchema.js:107:32)
+    at App.middlewares (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\config\server.config.ts:58:9)
+    at new App (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\config\server.config.ts:43:10)
+    at C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:37:17
+    at step (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:33:23)
+    at Object.next (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:14:53)
+    at C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:4:12)
+    at C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:35:2
+    at Object.<anonymous> (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:60:3)
+    at Module._compile (node:internal/modules/cjs/loader:1102:14)
+    at Module.m._compile (C:\Users\Jesus\Desktop\Lintufly-sales\server\node_modules\ts-node\src\index.ts:1295:23) 
+ json: {}
+2021-06-14T15:28:24.354Z [31merror[39m: [ERR] message: Unknown type "TokenPayload". 
+ Name: Error 
+ Stack: Error: Unknown type "TokenPayload".
+    at assertValidSDL (C:\Users\Jesus\Desktop\Lintufly-sales\server\node_modules\graphql\validation\validate.js:107:11)
+    at Object.buildASTSchema (C:\Users\Jesus\Desktop\Lintufly-sales\server\node_modules\graphql\utilities\buildASTSchema.js:45:34)
+    at buildSchemaFromTypeDefinitions (C:\Users\Jesus\Desktop\Lintufly-sales\server\dist\schema\src\buildSchemaFromTypeDefinitions.js:12:18)
+    at Object.makeExecutableSchema (C:\Users\Jesus\Desktop\Lintufly-sales\server\dist\schema\src\makeExecutableSchema.js:107:32)
+    at App.middlewares (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\config\server.config.ts:58:9)
+    at new App (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\config\server.config.ts:43:10)
+    at C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:37:17
+    at step (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:33:23)
+    at Object.next (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:14:53)
+    at C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:4:12)
+    at C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:35:2
+    at Object.<anonymous> (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:60:3)
+    at Module._compile (node:internal/modules/cjs/loader:1102:14)
+    at Module.m._compile (C:\Users\Jesus\Desktop\Lintufly-sales\server\node_modules\ts-node\src\index.ts:1295:23) 
+ json: {}
+2021-06-14T15:31:27.161Z [31merror[39m: [ERR] message: Unknown type "TokenPayload". 
+ Name: Error 
+ Stack: Error: Unknown type "TokenPayload".
+    at assertValidSDL (C:\Users\Jesus\Desktop\Lintufly-sales\server\node_modules\graphql\validation\validate.js:107:11)
+    at Object.buildASTSchema (C:\Users\Jesus\Desktop\Lintufly-sales\server\node_modules\graphql\utilities\buildASTSchema.js:45:34)
+    at buildSchemaFromTypeDefinitions (C:\Users\Jesus\Desktop\Lintufly-sales\server\dist\schema\src\buildSchemaFromTypeDefinitions.js:12:18)
+    at Object.makeExecutableSchema (C:\Users\Jesus\Desktop\Lintufly-sales\server\dist\schema\src\makeExecutableSchema.js:107:32)
+    at App.middlewares (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\config\server.config.ts:58:9)
+    at new App (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\config\server.config.ts:43:10)
+    at C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:37:17
+    at step (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:33:23)
+    at Object.next (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:14:53)
+    at C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:4:12)
+    at C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:35:2
+    at Object.<anonymous> (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:60:3)
+    at Module._compile (node:internal/modules/cjs/loader:1102:14)
+    at Module.m._compile (C:\Users\Jesus\Desktop\Lintufly-sales\server\node_modules\ts-node\src\index.ts:1295:23) 
+ json: {}
+2021-06-14T15:32:35.343Z [31merror[39m: [ERR] message: Unknown type "TokenPayload". 
+ Name: Error 
+ Stack: Error: Unknown type "TokenPayload".
+    at assertValidSDL (C:\Users\Jesus\Desktop\Lintufly-sales\server\node_modules\graphql\validation\validate.js:107:11)
+    at Object.buildASTSchema (C:\Users\Jesus\Desktop\Lintufly-sales\server\node_modules\graphql\utilities\buildASTSchema.js:45:34)
+    at buildSchemaFromTypeDefinitions (C:\Users\Jesus\Desktop\Lintufly-sales\server\dist\schema\src\buildSchemaFromTypeDefinitions.js:12:18)
+    at Object.makeExecutableSchema (C:\Users\Jesus\Desktop\Lintufly-sales\server\dist\schema\src\makeExecutableSchema.js:107:32)
+    at App.middlewares (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\config\server.config.ts:58:9)
+    at new App (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\config\server.config.ts:43:10)
+    at C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:37:17
+    at step (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:33:23)
+    at Object.next (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:14:53)
+    at C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:4:12)
+    at C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:35:2
+    at Object.<anonymous> (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:60:3)
+    at Module._compile (node:internal/modules/cjs/loader:1102:14)
+    at Module.m._compile (C:\Users\Jesus\Desktop\Lintufly-sales\server\node_modules\ts-node\src\index.ts:1295:23) 
+ json: {}

@@ -1,3 +1,10 @@
+const temp = process.exit;
+process.exit = function () {
+  console.trace();
+  process.exit = temp;
+  process.exit();
+};
+
 import cluster from 'cluster';
 import { cpus } from 'os';
 const cpusLength = cpus().length;
@@ -28,7 +35,7 @@ process.on('uncaughtException', (e) => {
 (async () => {
   if (process.env.NODE_ENV === 'dev') {
     const app = new App();
-    return app.listen();
+    return await app.listen();
   }
 
   //si estamos con el mastes, levantamos lo workes
@@ -48,6 +55,6 @@ process.on('uncaughtException', (e) => {
     //si no estamos con el master, levantamos la aplicación
   } else {
     const app = new App();
-    return app.listen();
+    return await app.listen();
   }
 })();

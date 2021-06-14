@@ -7,6 +7,10 @@ export default {
     async loginEmployee({}, { input: { mail, pass } }: LoginInput): Promise<string> {
       return employeeServices.login(mail, pass);
     },
+
+    async viewer() {
+      return '';
+    },
   },
 
   Mutation: {
