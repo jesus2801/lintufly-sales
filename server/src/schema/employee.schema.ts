@@ -2,14 +2,23 @@ import gql from 'graphql-tag';
 
 export default gql`
   type Query {
+    "Obtener la información del usuario actual"
     viewer: TokenPayload!
-    "Loguear un empleado de una empresa"
-    loginEmployee(input: LoginInput!): String!
   }
 
   type Mutation {
     "Crear un nuevo empleado de una empresa"
     createEmployee(input: EmployeeInput!, key: String!): Boolean!
+    "Loguear un empleado de una empresa"
+    loginEmployee(input: LoginInput!): LoginInfo!
+  }
+
+  "Información devuelta en el loguin de un empleado"
+  type LoginInfo {
+    "Token del usuario"
+    token: String!
+    "Payload con la información del usuario"
+    payload: TokenPayload!
   }
 
   "Información necesaria para el logueo de un empleado"

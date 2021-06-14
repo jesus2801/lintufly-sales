@@ -89,8 +89,8 @@ class EmployeeServices {
     let store: null | IStore = null;
     if (user.store) store = await StoreModel.findById(user.store).select('name');
 
-    //creo el payload del usuario y retorno el token firmado
-    return authServices.signToken({
+    //creo el payload del usuario
+    const payload = {
       role: user.role,
       mail: user.mail,
       name: user.name,
@@ -100,7 +100,13 @@ class EmployeeServices {
       storeId: user.store,
       storeName: store ? store.name : undefined,
       avatar: user.avatar,
-    });
+    };
+
+    // retorno el token firmado y el payload
+    return {
+      token: authServices.signToken(payload),
+      payload,
+    };
   }
 }
 

@@ -8,17 +8,22 @@ const isAdmin = rule({ cache: 'contextual' })(
   async ({}, {}, ctx, {}) => ctx.user.role === 'admin',
 );
 
+//regla para determinar si está autenticado
+const isAuthenticate = rule({ cache: 'contextual' })(
+  async ({}, {}, ctx, {}) => ctx.user !== null,
+);
+
 // reglas para todas las consultas y mutaciones
 export default shield(
   {
     Query: {
       //businesses
-      loginEmployee: allow,
       allBusiness: allow,
       getBusiness: allow,
       searchBusiness: allow,
       getBusinessWithCode: allow,
       //employees
+      viewer: isAuthenticate,
     },
     Mutation: {
       //businesses
@@ -28,6 +33,7 @@ export default shield(
       //employees
       createEmployee: allow,
       createStore: isAdmin,
+      loginEmployee: allow,
     },
   },
   {

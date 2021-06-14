@@ -401,3 +401,23 @@
     at Module._compile (node:internal/modules/cjs/loader:1102:14)
     at Module.m._compile (C:\Users\Jesus\Desktop\Lintufly-sales\server\node_modules\ts-node\src\index.ts:1295:23) 
  json: {}
+2021-06-14T15:52:04.230Z [31merror[39m: [ERR] message: It seems like you have applied rules to Query.loginEmployee fields but Shield cannot find them in your schema. 
+ Name: Error 
+ Stack: Error: It seems like you have applied rules to Query.loginEmployee fields but Shield cannot find them in your schema.
+    at applyRuleToType (C:\Users\Jesus\Desktop\Lintufly-sales\server\node_modules\graphql-shield\src\generator.ts:151:13)
+    at C:\Users\Jesus\Desktop\Lintufly-sales\server\node_modules\graphql-shield\src\generator.ts:265:25
+    at Array.reduce (<anonymous>)
+    at generateMiddlewareFromSchemaAndRuleTree (C:\Users\Jesus\Desktop\Lintufly-sales\server\node_modules\graphql-shield\src\generator.ts:259:8)
+    at MiddlewareGenerator.generator (C:\Users\Jesus\Desktop\Lintufly-sales\server\node_modules\graphql-shield\src\generator.ts:293:5)
+    at MiddlewareGenerator.generate (C:\Users\Jesus\Desktop\Lintufly-sales\server\node_modules\graphql-middleware\src\generator.ts:19:17)
+    at C:\Users\Jesus\Desktop\Lintufly-sales\server\node_modules\graphql-middleware\src\middleware.ts:74:25
+    at Array.map (<anonymous>)
+    at applyMiddlewareWithOptions (C:\Users\Jesus\Desktop\Lintufly-sales\server\node_modules\graphql-middleware\src\middleware.ts:72:45)
+    at Object.applyMiddleware (C:\Users\Jesus\Desktop\Lintufly-sales\server\node_modules\graphql-middleware\src\middleware.ts:132:10)
+    at App.middlewares (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\config\server.config.ts:57:15)
+    at new App (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\config\server.config.ts:43:10)
+    at C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:37:17
+    at step (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:33:23)
+    at Object.next (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:14:53)
+    at C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:8:71 
+ json: {}

@@ -1,3 +1,6 @@
+import type { MercuriusContext } from 'mercurius';
+import type { FastifyReply } from 'fastify';
+
 /**
  * Interface para la configuración de la clase Master que maneja los clusters
  * @category Interfaces
@@ -85,3 +88,11 @@ export type UserPayload =
        */
       avatar: string;
     };
+
+interface GraphqlReply extends FastifyReply {
+  user: UserPayload | null;
+}
+
+export interface GraphqlCtx extends MercuriusContext {
+  reply: GraphqlReply;
+}
