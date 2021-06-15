@@ -15,3 +15,13 @@ export const VIEWER = gql`
     }
   }
 `;
+
+export const GET_MIN_PRODUCTS_INFO = gql`
+  query {
+    getProducts {
+      _id
+      name
+      price
+    }
+  }
+`;

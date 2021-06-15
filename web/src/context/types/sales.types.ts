@@ -1,0 +1,1 @@
+export const SET_MIN_PRODUCTS = 'SET_MIN_PRODUCTS';

@@ -1,3 +1,5 @@
+import { MinProductsInfo } from './states';
+
 export interface RegisterCtx {
   businessName: string;
   businessMail: string;
@@ -25,7 +27,12 @@ export interface EmployeeCtx {
   payload: null | EmployeePayload;
 }
 
+export interface SalesCtx {
+  minProducts: MinProductsInfo[];
+}
+
 export interface AppCtx {
   register: RegisterCtx;
   employee: EmployeeCtx;
+  sales: SalesCtx;
 }
