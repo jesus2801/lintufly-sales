@@ -421,3 +421,39 @@
     at Object.next (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:14:53)
     at C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:8:71 
  json: {}
+2021-06-14T23:44:17.024Z [31merror[39m: [ERR] message: Cannot read property 'businessId' of null 
+ Name: TypeError 
+ Stack: TypeError: Cannot read property 'businessId' of null
+    at C:\Users\Jesus\Desktop\Lintufly-sales\server\src\graphql\resolvers\product.resolvers.ts:9:46
+    at step (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\graphql\resolvers\product.resolvers.ts:33:23)
+    at Object.next (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\graphql\resolvers\product.resolvers.ts:14:53)
+    at C:\Users\Jesus\Desktop\Lintufly-sales\server\src\graphql\resolvers\product.resolvers.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\graphql\resolvers\product.resolvers.ts:4:12)
+    at getProducts (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\graphql\resolvers\product.resolvers.ts:47:20)
+    at C:\Users\Jesus\Desktop\Lintufly-sales\server\node_modules\graphql-middleware\src\applicator.ts:35:9
+    at middleware (C:\Users\Jesus\Desktop\Lintufly-sales\server\node_modules\graphql-shield\src\generator.ts:70:22)
+    at processTicksAndRejections (node:internal/process/task_queues:93:5)
+    at async Promise.all (index 0)
+    at Object.fastifyGraphQl [as graphql] (C:\Users\Jesus\Desktop\Lintufly-sales\server\node_modules\mercurius\index.js:531:23) 
+ json: {}
+2021-06-14T23:47:48.525Z [31merror[39m: [ERR] message: It seems like you have applied rules to Mutation.getProducts fields but Shield cannot find them in your schema. 
+ Name: Error 
+ Stack: Error: It seems like you have applied rules to Mutation.getProducts fields but Shield cannot find them in your schema.
+    at applyRuleToType (C:\Users\Jesus\Desktop\Lintufly-sales\server\node_modules\graphql-shield\src\generator.ts:151:13)
+    at C:\Users\Jesus\Desktop\Lintufly-sales\server\node_modules\graphql-shield\src\generator.ts:265:25
+    at Array.reduce (<anonymous>)
+    at generateMiddlewareFromSchemaAndRuleTree (C:\Users\Jesus\Desktop\Lintufly-sales\server\node_modules\graphql-shield\src\generator.ts:259:8)
+    at MiddlewareGenerator.generator (C:\Users\Jesus\Desktop\Lintufly-sales\server\node_modules\graphql-shield\src\generator.ts:293:5)
+    at MiddlewareGenerator.generate (C:\Users\Jesus\Desktop\Lintufly-sales\server\node_modules\graphql-middleware\src\generator.ts:19:17)
+    at C:\Users\Jesus\Desktop\Lintufly-sales\server\node_modules\graphql-middleware\src\middleware.ts:74:25
+    at Array.map (<anonymous>)
+    at applyMiddlewareWithOptions (C:\Users\Jesus\Desktop\Lintufly-sales\server\node_modules\graphql-middleware\src\middleware.ts:72:45)
+    at Object.applyMiddleware (C:\Users\Jesus\Desktop\Lintufly-sales\server\node_modules\graphql-middleware\src\middleware.ts:132:10)
+    at App.middlewares (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\config\server.config.ts:57:15)
+    at new App (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\config\server.config.ts:43:10)
+    at C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:37:17
+    at step (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:33:23)
+    at Object.next (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:14:53)
+    at C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:8:71 
+ json: {}

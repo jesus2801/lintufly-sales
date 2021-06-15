@@ -5,12 +5,16 @@ import { GraphQLError } from 'graphql';
 
 // regla para determinar si un usuario es admin
 const isAdmin = rule({ cache: 'contextual' })(
-  async ({}, {}, ctx, {}) => ctx.user.role === 'admin',
+  ({}, {}, ctx, {}) => ctx.user.role === 'admin',
 );
 
 //regla para determinar si está autenticado
 const isAuthenticate = rule({ cache: 'contextual' })(
-  async ({}, {}, ctx, {}) => ctx.user !== null,
+  ({}, {}, ctx, {}) => ctx.user !== null,
+);
+
+const isEmployee = rule({ cache: 'contextual' })(
+  ({}, {}, ctx, {}) => ctx.user.role === 'employee' || ctx.user.role === 'admin',
 );
 
 // reglas para todas las consultas y mutaciones
@@ -24,6 +28,8 @@ export default shield(
       getBusinessWithCode: allow,
       //employees
       viewer: isAuthenticate,
+      //products
+      getProducts: isEmployee,
     },
     Mutation: {
       //businesses

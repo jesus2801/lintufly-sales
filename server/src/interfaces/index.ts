@@ -28,6 +28,45 @@ export type EmployeeRole = 'employee';
  */
 export type AppRoles = AdminRole | ClientRole | EmployeeRole;
 
+export interface EmployeePayload {
+  /**
+   * Rol del usuario
+   */
+  role: AdminRole | EmployeeRole;
+  /**
+   * Id del usuario
+   */
+  sub: string;
+  /**
+   * Email del usuario
+   */
+  mail: string;
+  /**
+   * Nombre del usuario
+   */
+  name: string;
+  /**
+   * Id de la empresa a la que pertenece el usuario
+   */
+  businessId: string;
+  /**
+   * Nombre de la empresa a la que pertenece el usuario
+   */
+  businessName: string;
+  /**
+   * Id de la tienda o local a la que pertenece el usuario
+   */
+  storeId?: string;
+  /**
+   * Nombre de la tienda o local a la que pertenece el usuario
+   */
+  storeName?: string;
+  /**
+   * avatar del usuario
+   */
+  avatar: string;
+}
+
 /**
  * Información que almacena el token de los usuarios
  */
@@ -50,45 +89,8 @@ export type UserPayload =
        */
       name: string;
     }
-  | {
-      /**
-       * Rol del usuario
-       */
-      role: AdminRole | EmployeeRole;
-      /**
-       * Id del usuario
-       */
-      sub: string;
-      /**
-       * Email del usuario
-       */
-      mail: string;
-      /**
-       * Nombre del usuario
-       */
-      name: string;
-      /**
-       * Id de la empresa a la que pertenece el usuario
-       */
-      businessId: string;
-      /**
-       * Nombre de la empresa a la que pertenece el usuario
-       */
-      businessName: string;
-      /**
-       * Id de la tienda o local a la que pertenece el usuario
-       */
-      storeId?: string;
-      /**
-       * Nombre de la tienda o local a la que pertenece el usuario
-       */
-      storeName?: string;
-      /**
-       * avatar del usuario
-       */
-      avatar: string;
-    };
+  | EmployeePayload;
 
 export interface GraphqlCtx extends MercuriusContext {
-  user: UserPayload | null;
+  user: EmployeePayload | null;
 }
