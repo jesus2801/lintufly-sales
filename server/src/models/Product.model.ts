@@ -1,5 +1,6 @@
-import { IModel } from '@interfaces/schema';
 import { Schema, model, Types, Document } from 'mongoose';
+
+import { IModel } from '@interfaces/schema';
 
 /**
  * Interfaz del modelo de Product

@@ -1,4 +1,8 @@
-import { ProductInput } from '@interfaces/schema/product.interfaces';
+import {
+  ProductChangesInput,
+  ProductIdInput,
+  ProductInput,
+} from '@interfaces/schema/product.interfaces';
 import { GraphqlCtx } from '@interfaces';
 
 import productServices from '@services/product.services';
@@ -12,7 +16,15 @@ export default {
 
   Mutation: {
     async createProduct({}, { input }: ProductInput, { user }: GraphqlCtx) {
-      return await productServices.create(input, user!.sub);
+      return await productServices.create(input, user!.businessId);
+    },
+
+    async deleteProduct({}, { _id }: ProductIdInput, { user }: GraphqlCtx) {
+      return await productServices.delete(_id, user!.businessId);
+    },
+
+    async updateProduct({}, { input, _id }: ProductChangesInput, { user }: GraphqlCtx) {
+      return await productServices.update(input, _id, user!.businessId);
     },
   },
 };

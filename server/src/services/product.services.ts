@@ -1,4 +1,4 @@
-import { ProductInfo } from '@interfaces/schema/product.interfaces';
+import { ProductChanges, ProductInfo } from '@interfaces/schema/product.interfaces';
 
 import ProductModel from '@models/Product.model';
 
@@ -23,6 +23,16 @@ class ProductServices {
 
   public async get(business: string) {
     return await ProductModel.find({ business });
+  }
+
+  public async delete(_id: string, business: string) {
+    await ProductModel.deleteOne({ _id, business });
+    return false;
+  }
+
+  public async update(changes: ProductChanges, _id: string, business: string) {
+    await ProductModel.updateOne({ _id, business }, changes);
+    return false;
   }
 }
 

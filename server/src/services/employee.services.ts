@@ -72,7 +72,9 @@ class EmployeeServices {
     if (!user.state) throw new ServiceError(errorCodes.employeeInactive);
 
     //buscamos el nombre de la empresa
-    const business = await BusinessModel.findById(user.business).select('name state');
+    const business = await BusinessModel.findById(user.business).select(
+      'name state currency',
+    );
 
     //valido que la empresa exista
     if (!business) {
@@ -100,6 +102,7 @@ class EmployeeServices {
       storeId: user.store,
       storeName: store ? store.name : undefined,
       avatar: user.avatar,
+      currency: business.currency,
     };
 
     // retorno el token firmado y el payload

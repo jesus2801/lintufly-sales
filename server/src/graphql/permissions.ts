@@ -42,6 +42,8 @@ export default shield(
       loginEmployee: allow,
       //products
       createProduct: isAdmin,
+      deleteProduct: isAdmin,
+      updateProduct: isAdmin,
     },
   },
   {

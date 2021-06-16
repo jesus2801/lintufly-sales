@@ -53,6 +53,8 @@ export default gql`
     storeName: String
     "avatar del usuario"
     avatar: String!
+    "Moneda que maneja la empresa"
+    currency: String!
   }
 
   "Información necesaria para crear un empleado"

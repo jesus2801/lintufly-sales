@@ -457,3 +457,43 @@
     at Object.next (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:14:53)
     at C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:8:71 
  json: {}
+2021-06-15T23:42:04.937Z [31merror[39m: [ERR] message: Mutation.deleteProduct defined in resolvers, but not in schema 
+ Name: Error 
+ Stack: Error: Mutation.deleteProduct defined in resolvers, but not in schema
+    at C:\Users\Jesus\Desktop\Lintufly-sales\server\dist\schema\src\addResolversToSchema.js:74:35
+    at Array.forEach (<anonymous>)
+    at C:\Users\Jesus\Desktop\Lintufly-sales\server\dist\schema\src\addResolversToSchema.js:69:44
+    at Array.forEach (<anonymous>)
+    at addResolversToSchema (C:\Users\Jesus\Desktop\Lintufly-sales\server\dist\schema\src\addResolversToSchema.js:18:28)
+    at schemaTransforms (C:\Users\Jesus\Desktop\Lintufly-sales\server\dist\schema\src\makeExecutableSchema.js:66:41)
+    at C:\Users\Jesus\Desktop\Lintufly-sales\server\dist\schema\src\makeExecutableSchema.js:108:65
+    at Array.reduce (<anonymous>)
+    at Object.makeExecutableSchema (C:\Users\Jesus\Desktop\Lintufly-sales\server\dist\schema\src\makeExecutableSchema.js:108:29)
+    at App.middlewares (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\config\server.config.ts:58:9)
+    at new App (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\config\server.config.ts:43:10)
+    at C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:37:17
+    at step (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:33:23)
+    at Object.next (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:14:53)
+    at C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:8:71
+    at new Promise (<anonymous>) 
+ json: {}
+2021-06-16T00:21:19.326Z [31merror[39m: [ERR] message: Mutation.updateProduct defined in resolvers, but not in schema 
+ Name: Error 
+ Stack: Error: Mutation.updateProduct defined in resolvers, but not in schema
+    at C:\Users\Jesus\Desktop\Lintufly-sales\server\dist\schema\src\addResolversToSchema.js:74:35
+    at Array.forEach (<anonymous>)
+    at C:\Users\Jesus\Desktop\Lintufly-sales\server\dist\schema\src\addResolversToSchema.js:69:44
+    at Array.forEach (<anonymous>)
+    at addResolversToSchema (C:\Users\Jesus\Desktop\Lintufly-sales\server\dist\schema\src\addResolversToSchema.js:18:28)
+    at schemaTransforms (C:\Users\Jesus\Desktop\Lintufly-sales\server\dist\schema\src\makeExecutableSchema.js:66:41)
+    at C:\Users\Jesus\Desktop\Lintufly-sales\server\dist\schema\src\makeExecutableSchema.js:108:65
+    at Array.reduce (<anonymous>)
+    at Object.makeExecutableSchema (C:\Users\Jesus\Desktop\Lintufly-sales\server\dist\schema\src\makeExecutableSchema.js:108:29)
+    at App.middlewares (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\config\server.config.ts:58:9)
+    at new App (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\config\server.config.ts:43:10)
+    at C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:37:17
+    at step (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:33:23)
+    at Object.next (C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:14:53)
+    at C:\Users\Jesus\Desktop\Lintufly-sales\server\src\index.ts:8:71
+    at new Promise (<anonymous>) 
+ json: {}

@@ -54,6 +54,10 @@ export interface EmployeePayload {
    */
   businessName: string;
   /**
+   * Moneda que maneja la empresa
+   */
+  currency: string;
+  /**
    * Id de la tienda o local a la que pertenece el usuario
    */
   storeId?: string;

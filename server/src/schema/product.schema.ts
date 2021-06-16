@@ -8,6 +8,10 @@ export default gql`
   type Mutation {
     "Crear un nuevo producto para la empresa"
     createProduct(input: ProductInput): ID!
+    "Eliminar un producto"
+    deleteProduct(_id: ID!): Boolean!
+    "Actualizar un producto"
+    updateProduct(changes: ProductChangesInput!, _id: ID!): Boolean!
   }
 
   "Input a introducir cuando se crea un producto"
@@ -18,6 +22,17 @@ export default gql`
     price: Float!
     "imagenes del producto"
     imgs: [String!]!
+    "Descripción del producto"
+    desc: String
+  }
+
+  input ProductChangesInput {
+    "Nombre del producto"
+    name: String
+    "Precio del producto acorde a la moneda de la empresa"
+    price: Float
+    "imagenes del producto"
+    imgs: [String!]
     "Descripción del producto"
     desc: String
   }
