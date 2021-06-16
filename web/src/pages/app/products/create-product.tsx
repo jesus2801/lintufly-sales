@@ -17,7 +17,7 @@ import Input from '@atoms/input/Input';
 
 import { CREATE_PRODUCT } from '@graphql/mutations';
 
-import { acceptedFormats } from '@utils/variables';
+import { acceptedFormats, cacheTag } from '@utils/variables';
 
 import FormDiv from '@molecules/form-div/FormDiv';
 
@@ -131,6 +131,7 @@ const CreateProduct = () => {
           .child(`products-images/${v4()}${file.name}`)
           .put(file, {
             contentType: file.type,
+            cacheControl: cacheTag,
           });
         handleLoading(false);
 

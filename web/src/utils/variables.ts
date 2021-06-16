@@ -22,6 +22,9 @@ export const preferredCountries = [
   've',
 ];
 
+//cache para las imágenes
+export const cacheTag = 'public, max-age=31536000';
+
 //Formatos de imagen aceptados
 export const acceptedFormats = ['image/png', 'image/jpeg', 'image/jpg', 'image/webp'];
 

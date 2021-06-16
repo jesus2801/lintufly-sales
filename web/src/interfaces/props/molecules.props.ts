@@ -1,3 +1,4 @@
+import { CompleteProduct } from '@interfaces/states';
 import { ReactNode, DetailedHTMLProps } from 'react';
 
 export interface FormDivProps
@@ -7,5 +8,9 @@ export interface FormDivProps
 
 export interface NavSectionProps {
   name: string;
-  items: { name: string; img: string, link: string }[];
+  items: { name: string; img: string; link: string }[];
+}
+
+export interface ProductCardProps {
+  product: CompleteProduct;
 }

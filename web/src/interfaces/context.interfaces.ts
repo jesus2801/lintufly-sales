@@ -1,4 +1,4 @@
-import { MinProductsInfo } from './states';
+import { CompleteProduct, MinProductsInfo } from './states';
 
 export interface RegisterCtx {
   businessName: string;
@@ -21,6 +21,7 @@ export interface EmployeePayload {
   storeId: string;
   storeName: string;
   avatar: string;
+  currency: string;
 }
 
 export interface EmployeeCtx {
@@ -29,6 +30,7 @@ export interface EmployeeCtx {
 
 export interface SalesCtx {
   minProducts: MinProductsInfo[];
+  completeProducts: CompleteProduct[];
 }
 
 export interface AppCtx {

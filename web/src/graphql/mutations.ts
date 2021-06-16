@@ -23,6 +23,8 @@ export const LOGIN_QUERY = gql`
         storeId
         storeName
         avatar
+        name
+        currency
       }
     }
   }
@@ -31,5 +33,11 @@ export const LOGIN_QUERY = gql`
 export const CREATE_PRODUCT = gql`
   mutation CreateProduct($input: ProductInput!) {
     createProduct(input: $input)
+  }
+`;
+
+export const DELETE_PRODUCT = gql`
+  mutation DeleteProduct($_id: ID!) {
+    deleteProduct(_id: $_id)
   }
 `;

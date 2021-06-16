@@ -13,6 +13,7 @@
     "@emotion/styled": "^11.3.0",
     "@tippyjs/react": "^4.2.5",
     "@types/uuid": "^8.3.0",
+    "axios": "^0.21.1",
     "firebase": "^8.6.5",
     "graphql": "^15.5.0",
     "next": "latest",

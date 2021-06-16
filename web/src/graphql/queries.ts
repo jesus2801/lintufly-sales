@@ -12,6 +12,7 @@ export const VIEWER = gql`
       storeId
       storeName
       avatar
+      currency
     }
   }
 `;
@@ -22,6 +23,19 @@ export const GET_MIN_PRODUCTS_INFO = gql`
       _id
       name
       price
+    }
+  }
+`;
+
+export const GET_PRODUCTS_LIST = gql`
+  query {
+    getProducts {
+      _id
+      name
+      price
+      imgs
+      desc
+      comments
     }
   }
 `;

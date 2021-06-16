@@ -28,6 +28,7 @@ import {
   setPhone,
 } from '@context/actions/register.actions';
 import { isEmpty } from '@functions/validate.functions';
+import { cacheTag } from '@utils/variables';
 
 const SubmitSection = () => {
   //extraemos los valores del state
@@ -104,6 +105,7 @@ const SubmitSection = () => {
           .child(`business-images/${v4()}${images[i].name}`)
           .put(images[i], {
             contentType: images[i].type,
+            cacheControl: cacheTag,
           });
 
         //almacenamos el los paths en un array
