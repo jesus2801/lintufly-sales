@@ -28,6 +28,7 @@
       "@config/*": ["src/config/*"],
       "@graphql/*": ["src/graphql/*"],
       "@pages/*": ["src/pages/*"],
+      "@hooks/*": ["src/hooks/*"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

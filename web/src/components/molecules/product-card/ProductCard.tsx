@@ -1,36 +1,38 @@
 import React, { useEffect, useState } from 'react';
 import { useMutation } from '@apollo/client';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
-import { alertDelete, handleLoading, success } from '@functions/alerts.functions';
+import {
+  alertDelete,
+  handleLoading,
+  showErr,
+  success,
+} from '@functions/alerts.functions';
 import { handlerRequestErr } from '@functions/validate.functions';
 
 import { ProductCardProps } from '@interfaces/props/molecules.props';
 import { AppCtx } from '@interfaces/context.interfaces';
 
-import { setCompleteProducts } from '@context/actions/sales.actions';
-
 import firebaseInstance from '@config/firebase.instance';
 
 import { ProductCardDiv } from './ProductCard.styles';
 
+import { GET_PRODUCTS_LIST } from '@graphql/queries';
 import { DELETE_PRODUCT } from '@graphql/mutations';
 
-const ProductCard = ({ product }: ProductCardProps) => {
+const ProductCard = ({ product, deleteProductOfHook }: ProductCardProps) => {
   const {
     employee: { payload },
-    sales: { completeProducts },
   } = useSelector((state: AppCtx) => state);
 
   const [deleteProduct] = useMutation(DELETE_PRODUCT, {
+    refetchQueries: [{ query: GET_PRODUCTS_LIST }],
     variables: {
       _id: product._id,
     },
   });
 
   const [image, setImage] = useState(null as null | string);
-
-  const dispatch = useDispatch();
 
   useEffect(() => {
     if (product.imgs.length > 0) {
@@ -53,35 +55,44 @@ const ProductCard = ({ product }: ProductCardProps) => {
         handleLoading(false);
 
         success(`El producto "${product.name}" ha sido eliminado correctamente`);
-        dispatch(
-          setCompleteProducts(completeProducts.filter(({ _id }) => _id !== product._id)),
-        );
+        deleteProductOfHook(product._id);
       } catch (e) {
         handlerRequestErr(e);
       }
     });
   };
 
+  const handleComments = () => {
+    if (product.comments.length === 0) {
+      showErr('Lo sentimos, este producto no posee comentarios');
+      return;
+    }
+
+    //TODO: mostrar comentarios
+  };
+
   return (
     <ProductCardDiv>
-      {image ? (
-        <div className="img-ctn">
-          <img src={image} alt="" />
-          <p>
-            {product.price} {payload!.currency}
-          </p>
+      <div className="main-ctn">
+        {image ? (
+          <div className="img-ctn">
+            <img src={image} alt="" />
+            <p>
+              {product.price} {payload!.currency}
+            </p>
+          </div>
+        ) : (
+          <div className="no-img"></div>
+        )}
+        <div className="content">
+          <h2>{product.name}</h2>
+          <p
+            className="desc"
+            dangerouslySetInnerHTML={{
+              __html: product.desc ? product.desc.replace(/\n/g, '<br />') : '',
+            }}
+          ></p>
         </div>
-      ) : (
-        <div className="no-img"></div>
-      )}
-      <div className="content">
-        <h2>{product.name}</h2>
-        <p
-          className="desc"
-          dangerouslySetInnerHTML={{
-            __html: product.desc ? product.desc.replace(/\n/g, '<br />') : '',
-          }}
-        ></p>
 
         <div className="buttons">
           <div className="icon red" onClick={handleDelete}>
@@ -92,7 +103,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
             <img src="/static/icons/edit.webp" alt="edit icon" />
           </div>
 
-          <div className="icon black">
+          <div className="icon black" onClick={handleComments}>
             <img src="/static/icons/chat.webp" alt="edit icon" />
           </div>
         </div>

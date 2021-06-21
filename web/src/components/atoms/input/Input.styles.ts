@@ -19,6 +19,7 @@ export const InputStyles = styled.div`
     outline: none;
     color: var(--black);
     border-bottom: 1px solid var(--grey);
+    background-color: transparent;
 
     padding: 4px;
 

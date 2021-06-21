@@ -11,55 +11,64 @@ export const ProductCardDiv = styled.div`
   -moz-box-shadow: 2px 4px 10px 0px rgba(217, 217, 217, 1);
   box-shadow: 2px 4px 10px 0px rgba(217, 217, 217, 1);
 
-  .img-ctn {
+  .main-ctn {
     width: 100%;
+    height: 100%;
     display: flex;
-    flex-direction: row;
-    align-items: flex-end;
-    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
 
-    p {
-      position: absolute;
-      margin: 0 0 5px 8px;
-      background-color: var(--blue);
-      color: #fff;
-      padding: 3px 8px;
-      border-radius: 100px;
+    .img-ctn {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      align-items: flex-end;
+      justify-content: flex-start;
 
-      font-size: 14px;
+      p {
+        position: absolute;
+        margin: 0 0 5px 8px;
+        background-color: var(--blue);
+        color: #fff;
+        padding: 3px 8px;
+        border-radius: 100px;
+
+        font-size: 14px;
+      }
+
+      img {
+        width: 100%;
+        border-radius: 6px 6px 0 0;
+        min-height: 50px;
+      }
     }
 
-    img {
+    .no-img {
       width: 100%;
+      height: 180px;
       border-radius: 6px 6px 0 0;
-      min-height: 50px;
-    }
-  }
-
-  .no-img {
-    width: 100%;
-    height: 180px;
-    border-radius: 6px 6px 0 0;
-    background-color: var(--purple);
-  }
-
-  .content {
-    box-sizing: border-box;
-    width: 100%;
-    padding: 10px;
-
-    h2 {
-      font-family: 'Montserrat', sans-serif;
-      color: var(--black);
-      font-weight: 600;
-      margin: 0;
-      font-size: 20px;
+      background-color: var(--purple);
     }
 
-    .desc {
+    .content {
+      box-sizing: border-box;
       width: 100%;
-      color: var(--black);
-      font-size: 14px;
+      padding: 10px;
+
+      h2 {
+        font-family: 'Montserrat', sans-serif;
+        color: var(--black);
+        font-weight: 600;
+        margin: 0;
+        font-size: 20px;
+      }
+
+      .desc {
+        width: 100%;
+        color: var(--black);
+        font-size: 14px;
+      }
     }
 
     .buttons {
@@ -68,6 +77,7 @@ export const ProductCardDiv = styled.div`
       flex-direction: row;
       align-items: center;
       justify-content: space-around;
+      margin-bottom: 15px;
 
       .icon {
         width: 35px;

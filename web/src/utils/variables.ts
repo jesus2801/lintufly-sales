@@ -39,7 +39,7 @@ export const navItems = [
       {
         name: 'Agendar pedido',
         img: `${baseUrl}notebook.webp`,
-        link: 'orders/create-order',
+        link: 'orders/create-order/',
       },
     ],
   },
@@ -83,7 +83,7 @@ export const navItems = [
       {
         name: 'Agregar Producto',
         img: `${baseUrl}notebook.webp`,
-        link: 'products/create-product',
+        link: 'products/create-product/',
       },
     ],
   },

@@ -15,6 +15,7 @@ import TextArea from '@atoms/text-area/TextArea';
 import Button from '@atoms/button/Button';
 import Input from '@atoms/input/Input';
 
+import { GET_PRODUCTS_LIST } from '@graphql/queries';
 import { CREATE_PRODUCT } from '@graphql/mutations';
 
 import { acceptedFormats, cacheTag } from '@utils/variables';
@@ -30,7 +31,9 @@ const CreateProduct = () => {
   const imageRef = useRef(null as null | HTMLImageElement);
 
   //mutacion para crear el producto
-  const [createProduct] = useMutation(CREATE_PRODUCT);
+  const [createProduct] = useMutation(CREATE_PRODUCT, {
+    refetchQueries: [{ query: GET_PRODUCTS_LIST }],
+  });
 
   //state inicial de la información del producto
   const initState = {

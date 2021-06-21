@@ -9,8 +9,10 @@ export interface FormDivProps
 export interface NavSectionProps {
   name: string;
   items: { name: string; img: string; link: string }[];
+  location: string;
 }
 
 export interface ProductCardProps {
   product: CompleteProduct;
+  deleteProductOfHook: (_id: string) => void;
 }

@@ -25,7 +25,7 @@ export const ItemLi = styled.li`
   cursor: pointer;
   transition: all 300ms ease;
 
-  &:hover {
+  &:hover, &.active {
     background-color: var(--grey);
   }
 

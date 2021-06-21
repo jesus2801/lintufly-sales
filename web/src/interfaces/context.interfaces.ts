@@ -30,7 +30,6 @@ export interface EmployeeCtx {
 
 export interface SalesCtx {
   minProducts: MinProductsInfo[];
-  completeProducts: CompleteProduct[];
 }
 
 export interface AppCtx {

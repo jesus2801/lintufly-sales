@@ -34,8 +34,8 @@ export const alertDelete = () => {
       text: '¡Este tipo de acciones no son reversibles!',
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
+      confirmButtonColor: 'var(--blue)',
+      cancelButtonColor: 'var(--red)',
       cancelButtonText: 'Cancelar',
       confirmButtonText: '¡Si!',
     }).then((result) => {
