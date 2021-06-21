@@ -10,6 +10,7 @@ import { handlerErrors, ServiceError } from '@utils/handler.errors';
 import errorCodes from '@utils/error.codes';
 
 import BusinessModel, { IBusiness } from '@models/Business.model';
+import { deleteBusinessRelations } from '@models/helpers';
 import EmployeeModel from '@models/Employee.model';
 
 import { hashPass } from '@functions';
@@ -131,7 +132,7 @@ class BusinessServices {
    * @returns {boolean} retorno `false` indicando que todo ha estado correcto
    */
   public async delete(_id: string): Promise<boolean> {
-    //TODO: eliminar todo lo que esté anexado a la empresa
+    deleteBusinessRelations(_id);
     await BusinessModel.deleteOne({ _id });
     return false;
   }

@@ -1,6 +1,9 @@
 import { ProductChanges, ProductInfo } from '@interfaces/schema/product.interfaces';
 
+import { deleteProductImages } from '@models/helpers';
 import ProductModel from '@models/Product.model';
+import errorCodes from '@utils/error.codes';
+import { handlerErrors, ServiceError } from '@utils/handler.errors';
 
 class ProductServices {
   /**
@@ -21,15 +24,30 @@ class ProductServices {
     return product._id;
   }
 
+  //obtener todos los productos de una empresa
   public async get(business: string) {
     return await ProductModel.find({ business });
   }
 
+  //eliminar un producto de una empresa
   public async delete(_id: string, business: string) {
-    await ProductModel.deleteOne({ _id, business });
+    //obtenemos el documento solo con sus imagenes
+    const doc = await ProductModel.findOne({ _id, business }).select('imgs');
+
+    //si no existe el documento lo reportamos y devolvemos al usuario
+    if (!doc) {
+      handlerErrors(new Error(errorCodes.productNonFoundOnDelete));
+      throw new ServiceError(errorCodes.productNonFoundOnDelete);
+    }
+
+    //eliminamos las imagenes de firebase storage
+    deleteProductImages(doc.imgs);
+    //eliminamos el documento
+    await doc.delete();
     return false;
   }
 
+  //actualizar un producto de una empresa
   public async update(changes: ProductChanges, _id: string, business: string) {
     await ProductModel.updateOne({ _id, business }, changes);
     return false;

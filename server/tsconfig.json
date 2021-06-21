@@ -9,8 +9,10 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
+    "typeRoots": ["@types", "node_modules"],
     "types": ["jest"],
     "paths": {
+      "@/*": ["../*"],
       "@config/*": ["config/*"],
       "@config": ["config/index"],
       "@functions/*": ["functions/*"],
