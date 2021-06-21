@@ -1,3 +1,4 @@
+import { CompleteProduct } from '@interfaces/states';
 import type { DetailedHTMLProps, ReactNode, MutableRefObject } from 'react';
 import { TitleTheme } from './styles.props';
 
@@ -52,4 +53,8 @@ export interface TextAreaProps
     HTMLTextAreaElement
   > {
   children?: ReactNode;
+}
+
+export interface ProductPopupProps {
+  product: Omit<CompleteProduct, 'comments'>;
 }

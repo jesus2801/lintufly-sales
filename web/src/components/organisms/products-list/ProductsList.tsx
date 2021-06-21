@@ -5,6 +5,7 @@ import { setSelectedProduct } from '@context/actions/sales.actions';
 
 import { MainDiv, ProductsListGrid } from './ProductsList.styles';
 
+import ProductPopup from '@molecules/product-popup/ProductPopup';
 import ProductCard from '@molecules/product-card/ProductCard';
 
 import { AppCtx } from '@interfaces/context.interfaces';
@@ -37,39 +38,7 @@ const ProductsList = () => {
 
   return (
     <>
-      <Popup>{selectedProduct && (
-        <div>
-          <h1>{selectedProduct.name}</h1>
-          <h1>alsdkjff</h1>
-          <h1>alsdkjff</h1>
-          <h1>alsdkjff</h1>
-          <h1>alsdkjff</h1>
-          <h1>alsdkjff</h1>
-          <h1>alsdkjff</h1>
-          <h1>alsdkjff</h1>
-          <h1>alsdkjff</h1>
-          <h1>alsdkjff</h1>
-          <h1>alsdkjff</h1>
-          <h1>alsdkjff</h1>
-          <h1>alsdkjff</h1>
-          <h1>alsdkjff</h1>
-          <h1>alsdkjff</h1>
-          <h1>alsdkjff</h1>
-          <h1>alsdkjff</h1>
-          <h1>alsdkjff</h1>
-          <h1>alsdkjff</h1>
-          <h1>alsdkjff</h1>
-          <h1>alsdkjff</h1>
-          <h1>alsdkjff</h1>
-          <h1>alsdkjff</h1>
-          <h1>alsdkjff</h1>
-          <h1>alsdkjff</h1>
-          <h1>alsdkjff</h1>
-          <h1>alsdkjff</h1>
-          <h1>alsdkjff</h1>
-          <h1>alsdkjff</h1>
-        </div>
-      )}</Popup>
+      <Popup>{selectedProduct && <ProductPopup product={selectedProduct} />}</Popup>
 
       <Input placeholder="Realiza una búsqueda" onChange={handleChange} />
 
