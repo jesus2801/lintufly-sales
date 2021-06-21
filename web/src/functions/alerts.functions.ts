@@ -1,10 +1,14 @@
 import Swal from 'sweetalert2';
 
 export const showErr = (message: string) => {
+  if (Swal.isVisible()) Swal.close();
+
   Swal.fire('¡Error!', message, 'error');
 };
 
 export const success = (message: string, onClose?: () => void) => {
+  if (Swal.isVisible()) Swal.close();
+
   Swal.fire({
     title: '¡Yuhuu!',
     text: message,
@@ -28,6 +32,8 @@ export const handleLoading = (state: boolean, title?: string) => {
 };
 
 export const alertDelete = () => {
+  if (Swal.isVisible()) Swal.close();
+
   return new Promise((resolve) => {
     Swal.fire({
       title: '¿Estás seguro?',
