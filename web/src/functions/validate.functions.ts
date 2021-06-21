@@ -1,5 +1,3 @@
-import Router from 'next/router';
-
 import errorCodes from '@utils/error.codes';
 
 import { showErr } from './alerts.functions';
@@ -49,6 +47,9 @@ export const switchErrorCode = (errCode: string): string => {
 
     case errorCodes.employeeDontHaveBusiness:
       return 'Lo sentimos, el empleado con el que intenta acceder parece no estar anexado a ninguna empresa, este error ya ha sido reportado a nosotros, pronto nos comunicaremos con tu empresa';
+
+    case errorCodes.productNonFoundOnDelete:
+      return 'Lo sentimos, el producto que intenta eliminar ya ha sido eliminado por otro individuo';
 
     case 'Forbidden':
       return 'No tienes credenciales o se han agotado, por favor, logueate para continuar';

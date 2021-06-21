@@ -15,4 +15,5 @@ export default {
   employeeInactive: 'employee inactive',
   businessInactive: 'business inactive',
   employeeDontHaveBusiness: 'employee dont have business',
+  productNonFoundOnDelete: 'product not found on delete',
 };
