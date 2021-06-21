@@ -33,7 +33,7 @@ export const PopupDiv = styled.div`
   width: 91%;
   max-width: ${(props: PopupDivProps) => props.theme.maxWidth};
   background-color: #fff;
-  border-radius: 8px;
+  border-radius: 5px;
 
   transform: scale(0.3);
 

@@ -15,7 +15,6 @@ export const AppHeaderDiv = styled.div`
   justify-content: space-between;
 
   background-color: var(--purple);
-  z-index: 2;
 `;
 
 export const UserNameParagraph = styled.p`
@@ -27,7 +26,7 @@ export const UserNameParagraph = styled.p`
     border-radius: 4px;
     color: var(--black);
     font-size: 15px;
-    padding: 4px 7px;
+    padding: 6px 8px;
   }
 `;
 

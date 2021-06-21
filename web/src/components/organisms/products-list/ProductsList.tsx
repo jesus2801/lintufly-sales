@@ -18,7 +18,7 @@ import Input from '@atoms/input/Input';
 const ProductsList = () => {
   const { selectedProduct } = useSelector((state: AppCtx) => state.sales);
   const { data, searchProducts, deleteProductOfHook } = useProducts();
-  const { Popup, setState, state } = usePopup({ maxWidth: '800px' });
+  const { Popup, setState, state } = usePopup({ maxWidth: '850px' });
 
   const dispatch = useDispatch();
 
