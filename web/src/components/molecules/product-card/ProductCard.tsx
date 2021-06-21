@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useMutation } from '@apollo/client';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import {
   alertDelete,
@@ -19,6 +19,7 @@ import { ProductCardDiv } from './ProductCard.styles';
 
 import { GET_PRODUCTS_LIST } from '@graphql/queries';
 import { DELETE_PRODUCT } from '@graphql/mutations';
+import { setSelectedProduct } from '@context/actions/sales.actions';
 
 const ProductCard = ({ product, deleteProductOfHook }: ProductCardProps) => {
   const {
@@ -33,6 +34,8 @@ const ProductCard = ({ product, deleteProductOfHook }: ProductCardProps) => {
   });
 
   const [image, setImage] = useState(null as null | string);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (product.imgs.length > 0) {
@@ -71,6 +74,18 @@ const ProductCard = ({ product, deleteProductOfHook }: ProductCardProps) => {
     //TODO: mostrar comentarios
   };
 
+  const handleUpdate = () => {
+    dispatch(
+      setSelectedProduct({
+        _id: product._id,
+        imgs: product.imgs,
+        name: product.name,
+        price: product.price,
+        desc: product.desc,
+      }),
+    );
+  };
+
   return (
     <ProductCardDiv>
       <div className="main-ctn">
@@ -99,7 +114,7 @@ const ProductCard = ({ product, deleteProductOfHook }: ProductCardProps) => {
             <img src="/static/icons/garbage.webp" alt="garbage icon" />
           </div>
 
-          <div className="icon purple">
+          <div className="icon purple" onClick={handleUpdate}>
             <img src="/static/icons/edit.webp" alt="edit icon" />
           </div>
 

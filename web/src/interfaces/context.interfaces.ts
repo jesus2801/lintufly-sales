@@ -30,6 +30,7 @@ export interface EmployeeCtx {
 
 export interface SalesCtx {
   minProducts: MinProductsInfo[];
+  selectedProduct: null | Omit<CompleteProduct, 'comments'>;
 }
 
 export interface AppCtx {

@@ -19,3 +19,9 @@ export interface FormGroupThemeProps {
     margin?: string;
   };
 }
+
+export interface PopupDivProps {
+  theme: {
+    maxWidth: string;
+  };
+}

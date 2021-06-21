@@ -1,9 +1,12 @@
+import { SET_MIN_PRODUCTS, SET_SELECTED_PRODUCT } from '@context/types/sales.types';
+
 import { SalesCtx } from '@interfaces/context.interfaces';
+
 import { AppActions } from '@interfaces';
-import { SET_MIN_PRODUCTS } from '@context/types/sales.types';
 
 const initState: SalesCtx = {
   minProducts: [],
+  selectedProduct: null,
 };
 
 const reducer = (state = initState, action: AppActions): SalesCtx => {
@@ -12,6 +15,12 @@ const reducer = (state = initState, action: AppActions): SalesCtx => {
       return {
         ...state,
         minProducts: action.payload,
+      };
+
+    case SET_SELECTED_PRODUCT:
+      return {
+        ...state,
+        selectedProduct: action.payload,
       };
 
     default:
