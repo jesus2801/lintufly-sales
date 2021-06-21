@@ -23,8 +23,8 @@ export default {
       return await productServices.delete(_id, user!.businessId);
     },
 
-    async updateProduct({}, { input, _id }: ProductChangesInput, { user }: GraphqlCtx) {
-      return await productServices.update(input, _id, user!.businessId);
+    async updateProduct({}, { changes, _id }: ProductChangesInput, { user }: GraphqlCtx) {
+      return await productServices.update(changes, _id, user!.businessId);
     },
   },
 };

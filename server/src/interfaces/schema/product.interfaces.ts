@@ -66,7 +66,7 @@ export interface ProductChangesInput {
   /**
    * Información a cambiar del producto
    */
-  input: ProductChanges;
+  changes: ProductChanges;
   /**
    * Id del producto
    */
