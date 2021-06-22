@@ -13,6 +13,7 @@ import Svg from '@atoms/Svg';
 
 import { DescriptionText, PhotosCtn, PhotosSectionDiv } from './PhotosSection.styles';
 import { acceptedFormats } from '@utils/variables';
+import { validateImageFile } from '@functions/validate.functions';
 
 const PhotosSection = () => {
   const { images } = useSelector((state: AppCtx) => state.register);
@@ -45,24 +46,13 @@ const PhotosSection = () => {
     //archivo subido
     const file = e.currentTarget.files![0];
 
-    //si el archivo no está dentro de los formatos permitidos no lo dejo seguir
-    if (acceptedFormats.indexOf(file.type) === -1) {
-      showErr(
-        'El tipo de formato de la imagen no está permitido, por favor intente con otro formato',
-      );
-      return;
-    }
+    //validamos el archivo
+    const response = validateImageFile(file, { generateUrl: true });
+    //si es inválido no seguimos
+    if (!response.isValid) return;
 
-    //si el archivo se excede de los 5MB no lo dejo seguir
-    if (file.size > 5000000) {
-      showErr('El tamaño máximo de una imagen es de 5MB');
-      return;
-    }
-
-    //creo el blob y la url para mostrar la imagen subida
-    const blob = new Blob([file]);
-    const URL = window.URL || window.webkitURL;
-    const background = `url("${URL.createObjectURL(blob)}")`;
+    //creamos el background con la url provisional de la imagen
+    const background = `url("${response.url}")`;
 
     //dependiendo de cuantas imagenes hallan, la ubico en su respectiva
     //tarjeta

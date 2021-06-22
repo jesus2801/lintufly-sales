@@ -31,7 +31,7 @@ export const handleLoading = (state: boolean, title?: string) => {
   Swal.close();
 };
 
-export const alertDelete = () => {
+export const alertDelete = (): Promise<boolean> => {
   if (Swal.isVisible()) Swal.close();
 
   return new Promise((resolve) => {

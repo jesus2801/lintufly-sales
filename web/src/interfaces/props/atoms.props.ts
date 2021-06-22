@@ -54,7 +54,3 @@ export interface TextAreaProps
   > {
   children?: ReactNode;
 }
-
-export interface ProductPopupProps {
-  product: Omit<CompleteProduct, 'comments'>;
-}

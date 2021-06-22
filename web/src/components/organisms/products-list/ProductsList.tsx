@@ -38,7 +38,7 @@ const ProductsList = () => {
 
   return (
     <>
-      <Popup>{selectedProduct && <ProductPopup product={selectedProduct} />}</Popup>
+      <Popup>{selectedProduct && <ProductPopup />}</Popup>
 
       <Input placeholder="Realiza una búsqueda" onChange={handleChange} />
 

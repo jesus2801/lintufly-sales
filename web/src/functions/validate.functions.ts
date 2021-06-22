@@ -1,4 +1,9 @@
+import {
+  ValidateImageFileResponse,
+  ValidateImageFileOpts,
+} from '@interfaces/functions.interfaces';
 import errorCodes from '@utils/error.codes';
+import { acceptedFormats } from '@utils/variables';
 
 import { showErr } from './alerts.functions';
 
@@ -83,8 +88,43 @@ export const handlerRequestErr = (e: any) => {
     return;
   }
 
+  if (!navigator.onLine) {
+    showErr(
+      '¡Oh no!, parece que no estás conectado a una red wifi, por favor verifica tu conexión',
+    );
+  }
+
   //si el error es desconocido, mostramos este mensaje
   showErr('Lo sentimos, ha ocurrido un error inesperado, por favor intenta más tarde');
 };
 
 export const isEmpty = (...strs: string[]) => strs.some((str) => str.trim() === '');
+
+export const validateImageFile = (
+  file: File,
+  { generateUrl = false }: ValidateImageFileOpts,
+): ValidateImageFileResponse => {
+  //si el archivo no está dentro de los formatos permitidos no lo dejo seguir
+  if (acceptedFormats.indexOf(file.type) === -1) {
+    showErr(
+      'El tipo de formato de la imagen no está permitido, por favor intente con otro formato',
+    );
+    return { isValid: false };
+  }
+
+  //si el archivo se excede de los 5MB no lo dejo seguir
+  if (file.size > 5000000) {
+    showErr('El tamaño máximo de una imagen es de 5MB');
+    return { isValid: false };
+  }
+
+  if (!generateUrl) return { isValid: true };
+
+  const blob = new Blob([file]);
+  const URL = window.URL || window.webkitURL;
+
+  return {
+    isValid: true,
+    url: URL.createObjectURL(blob),
+  };
+};
